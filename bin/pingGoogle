@@ -1,0 +1,5 @@
+#!/bin/bash
+# Simple Ping to www.google.com
+
+sleep 2
+ping -c 5 www.google.com
