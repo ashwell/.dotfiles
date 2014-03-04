@@ -2,6 +2,12 @@
 #     .bash_prompt
 #
 
+# Cursors
+# Block
+echo -e '\033[?6c'
+# Underline
+#echo -e '\033[?2c'
+
 #export HEY=`acpi|grep -c "Discharging"`
 
 PROMPT_COMMAND='echo "" ; acpi'
