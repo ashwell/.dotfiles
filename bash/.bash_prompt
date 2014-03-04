@@ -2,8 +2,9 @@
 #     .bash_prompt
 #
 
-export HEY=`acpi|grep -c "Discharging"`
-PROMPT_COMMAND='acpi'
+#export HEY=`acpi|grep -c "Discharging"`
+
+PROMPT_COMMAND='echo "" ; acpi'
 
 PS1='[\u@\h \W]\$ '
 
