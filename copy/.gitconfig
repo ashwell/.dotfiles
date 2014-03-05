@@ -1,0 +1,11 @@
+[color]
+	ui = true
+[core]
+	excludesfile = ~/.gitignore_global
+[push]
+	default = simple
+[alias]
+  rso = remote show origin
+  fdry = fetch origin --dry-run
+  new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative

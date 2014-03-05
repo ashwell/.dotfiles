@@ -2,6 +2,10 @@
 #     .bash_prompt
 #
 
+# Source .colors
+#[[ -f .colors ]] && . .colors
+[[ -f ~/.dotfiles/bash/.colors ]] && . ~/.dotfiles/bash/.colors
+
 # Cursors
 # Block
 echo -e '\033[?6c'

@@ -14,7 +14,7 @@ export VISUAL=/usr/bin/vim
 # export PATH="$PATH:~/dotfiles/bin/"
 
 # CUSTOM CDPATH
-# export CDPATH=".:$HOME/workspace"
+export CDPATH="~/workspace"
 
 # INPUTRC
 [[ -f ~/.dotfiles/bash/.inputrc ]] && export INPUTRC="~/.dotfiles/bash/.inputrc"
