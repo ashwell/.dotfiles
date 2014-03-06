@@ -13,4 +13,3 @@ echo -e '\033[?6c'
 PROMPT_COMMAND='echo "" ; acpi'
 
 PS1='[\u@\h \W]\$ '
-
