@@ -5,8 +5,8 @@
 alias vi=vim
 
 # Aliases
-alias ls='ls --color=auto'
-#alias ls='ls -G'
+alias ls='command ls --color=auto'
+#alias ls='command ls -G'
 alias ll="ls -l"
 alias la="ls -la"
 alias c="clear"
