@@ -16,13 +16,6 @@ export PATH HISTFILESIZE HISTSIZE
 unset USERNAME
 
 echo "#### `uname -a`"
-echo "#### `ec2-metadata -p`"
-echo "#### `ec2-metadata -h`"
-echo "#### `ec2-metadata -v`"
-echo "#### `ec2-metadata -o`"
-echo "#### `ec2-metadata -s`"
-echo "#### `ec2-metadata -i`"
-echo "#### `ec2-metadata -t`"
 echo "#### instance-stats:`uptime`"
 echo "####"
 echo "#### Welcome to `hostname`, `whoami`!"
