@@ -6,15 +6,14 @@
 [[ $- != *i* ]] && return
 
 # ENVIRONMENT VARS
-export PAGER=/bin/less
-export EDITOR=/usr/bin/vim
-export VISUAL=/usr/bin/vim
+[[ `command -v less` ]] && export PAGER=`command -v less`
+[[ `command -v vim` ]] && export EDITOR=`command -v vim` ; export VISUAL=`command -v vim`
 
 # CUSTOM PATH
 # export PATH="$PATH:~/dotfiles/bin/"
 
 # CUSTOM CDPATH
-export CDPATH="~/workspace"
+[[ -d "$HOME/workspace" ]] && export CDPATH="$HOME/workspace"
 
 # INPUTRC
 [[ -f ~/.dotfiles/bash/.inputrc ]] && export INPUTRC="~/.dotfiles/bash/.inputrc"
