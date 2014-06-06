@@ -5,8 +5,12 @@
 alias vi=vim
 
 # Aliases
-alias ls='command ls --color=auto'
-#alias ls='command ls -G'
+if [ "$OSTYPE" == "darwin"* ] then
+  alias ls='command ls -G'
+else
+  alias ls='command ls --color=auto'
+fi
+
 alias ll="ls -l"
 alias la="ls -la"
 
