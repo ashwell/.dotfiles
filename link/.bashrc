@@ -19,6 +19,9 @@
 [[ -f ~/.dotfiles/link/.inputrc ]] && export INPUTRC="~/.dotfiles/link/.inputrc"
 
 
+# if bash 4
+[[ "$BASH_VERSION" == "4"* ]] shopt -s globstar
+
 # Source files, Should change to function, maybe change the folder structure a little too
 [[ -f ~/.dotfiles/source/.bash_aliases ]] && . ~/.dotfiles/source/.bash_aliases
 [[ -f ~/.dotfiles/source/.bash_prompt ]] && . ~/.dotfiles/source/.bash_prompt
