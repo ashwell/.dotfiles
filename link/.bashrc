@@ -10,10 +10,10 @@
 [[ `command -v vim` ]] && export EDITOR=`command -v vim` ; export VISUAL=`command -v vim`
 
 # CUSTOM PATH
-# export PATH="$PATH:~/dotfiles/bin/"
+export PATH="/usr/local/bin:~/dotfiles/bin/:$PATH"
 
 # CUSTOM CDPATH
-[[ -d "$HOME/workspace" ]] && export CDPATH="$HOME/workspace"
+[[ -d "~/workspace" ]] && export CDPATH="~/workspace"
 
 # INPUTRC
 [[ -f ~/.dotfiles/link/.inputrc ]] && export INPUTRC="~/.dotfiles/link/.inputrc"

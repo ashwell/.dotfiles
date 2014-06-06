@@ -1,3 +1,5 @@
+[user]
+	name = Ryan Bogle
 [core]
 	excludesfile = ~/.gitignore_global
 [color]
