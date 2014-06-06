@@ -6,6 +6,9 @@ xcode-select --install
 # install homebrew
 ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 
+brew update
+brew doctor
+
 # brew install stuffs: [bash, bash-completion, git, node]
 
 # install bash
@@ -19,15 +22,16 @@ chsh -s /usr/local/bin/bash
 echo $BASH && echo $BASH_VERSION
 
 
-#brew install bash-completion
+brew install bash-completion
 
-#brew install git
+brew install git
 
-#brew install node
+brew install node
 
 
 # pull down .dotfiles
-#cd ~
-#git clone git@github.com:Ashwell/.dotfiles.git
+cd ~
+git clone http://github.com/Ashwell/.dotfiles.git
 
 # install .dotfiles (link step)
+# TODO

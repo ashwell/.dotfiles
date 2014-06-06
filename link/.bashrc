@@ -25,3 +25,13 @@
 # Source files, Should change to function, maybe change the folder structure a little too
 [[ -f ~/.dotfiles/source/.bash_aliases ]] && . ~/.dotfiles/source/.bash_aliases
 [[ -f ~/.dotfiles/source/.bash_prompt ]] && . ~/.dotfiles/source/.bash_prompt
+
+if [ "$OSTYPE" == "darwin"* ] then
+    if [ -f $(brew --prefix)/etc/bash_completion ]; then
+        . $(brew --prefix)/etc/bash_completion
+    fi
+    if [ `command mono -v` ] then
+        export MONO_GAC_PREFIX="/usr/local"
+    fi
+fi
+

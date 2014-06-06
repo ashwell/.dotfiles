@@ -32,3 +32,6 @@ alias lg="logout"
 alias gfshow="git fetch origin && echo 'fetched origin' && git remote show origin"
 alias cstat="clear && git status"
 
+# Homebrew
+[[ `command brew -v` == "Homebrew"* ]] && alias brewu="brew update && brew doctor"
+
