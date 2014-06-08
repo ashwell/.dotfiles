@@ -5,17 +5,28 @@
 
 # Source .colors
 #[[ -f .colors ]] && . .colors
-[[ -f ~/.dotfiles/bash/.colors ]] && . ~/.dotfiles/bash/.colors
+[[ -f ~/.dotfiles/source/.colors ]] && source ~/.dotfiles/source/.colors
 
 # Cursors
 # Block
-echo -e '\033[?6c'
+#echo -e '\033[?6c'
 # Underline
 #echo -e '\033[?2c'
 
 #export HEY=`acpi|grep -c "Discharging"`
 
 #[[ `command -v acpi` ]] && PROMPT_COMMAND='echo "" ; acpi'
+
+# OSX Battery Info
+# pmset -g batt
+
+# Parts of prompt
+# Time
+# Machine and Login info
+# Battery Info % and time left
+# Current folder location
+# Git info
+# Colors for Login type SSH vs local
 
 num=0
 
@@ -29,6 +40,7 @@ function set_batt_info() {
 	export BATT_INFO
 }
 
-PROMPT_COMMAND="set_batt_info"
+[[ `command -v acpi` ]] && PROMPT_COMMAND="set_batt_info"
 
-PS1="\n\$BATT_INFO\n[\u@\h:\W]\$ "
+#PS1="\n\$BATT_INFO\n[\u@\h:\W]\$ "
+PS1="[\u@\h:\W]\$ "

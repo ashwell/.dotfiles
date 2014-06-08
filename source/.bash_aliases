@@ -2,15 +2,12 @@
 # ~/.bash_aliases
 #
 
-alias vi=vim
+[[ `command vim --version` ]] && alias vi=vim
 
 # Aliases
-if [ "$OSTYPE" == "darwin"* ] then
-  alias ls='command ls -G'
-else
-  alias ls='command ls --color=auto'
-fi
-
+[[ "$OSTYPE" == "darwin"* ]] && alias ls='command ls -G'
+# Needs a double check
+[[ "$OSTYPE" == "arch"* ]] && alias ls='command ls --color=auto'
 alias ll="ls -l"
 alias la="ls -la"
 
