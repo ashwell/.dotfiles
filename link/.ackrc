@@ -1,3 +1,51 @@
---ignore-directory=bower_components
---ignore-directory=node_modules
+#--pager=less -r
 
+--ignore-directory=bower_components
+#--ignore-file=ext:gif,jpg,jpeg,png
+
+#--type-add=TYPE:FILTER:FILTERARGS
+#--nobreak
+
+# Case insensitive search unless capital is found in the search pattern
+--smart-case
+#--no-smart-case
+
+#--context=1
+#--after-context=1
+#--before-context=1
+
+#-c or --count
+
+#--color-filename=color
+#--color-match=color
+#--color-lineno=color
+
+#--ignore-case or -i
+#--invert-match
+
+# for symlinks
+--nofollow
+#--nofollow or --follow
+
+# search filenames use -g PATTERN
+# limit search to known-types -k or --known-types
+
+# Output line numbers only
+#--lines=NUM
+
+# Only output file names with matches
+#-l or --files-with-matches
+# Only ouput file names without matches
+#-L or --files-without-matches
+
+# To specifiy pattern anywhere in args list
+#--match PATTERN
+
+# Stop reading file after this many matches
+#-m=NUM or --max-count=NUM
+
+# No recursion
+#-n or --no-recurse
+
+# only part of matching line
+#-o
