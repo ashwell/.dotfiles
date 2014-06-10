@@ -60,6 +60,14 @@ set_batt_info(){
 # Current folder location
 
 # Git info
+set_git_info(){
+  PRMT_GIT=""
+  if [ `command -v git` ]; then
+    # Current Branch
+    PRMT_GIT=`git branch | awk '{if ($0 ~ /\*/) print $2}'`
+  fi
+  export PRMT_GIT
+}
 
 # Colors for Login type SSH vs local
 
@@ -67,13 +75,14 @@ set_batt_info(){
 make_prompt(){
   set_time_date
   set_batt_info
+  set_git_info
 }
 
 
 PROMPT_COMMAND=make_prompt
 
 colorOff='\[\e[0m\]'
-PS1='\n${PRMT_TIME} -- $(echo -e "\[$battColorOn\]")${PRMT_BATT}'"\[${colorOff}\]"'\n[\u@\h:\W]\$ '
+PS1='\n${PRMT_TIME} -- $(echo -e "\[$battColorOn\]")${PRMT_BATT}'"\[${colorOff}\]"'\n[\u@\h:\W][ $PRMT_GIT ]\$ '
 
 export PS1
 
