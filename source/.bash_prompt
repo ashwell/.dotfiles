@@ -21,26 +21,58 @@
 # pmset -g batt
 
 # Parts of prompt
-# Time
-# Machine and Login info
-# Battery Info % and time left
-# Current folder location
-# Git info
-# Colors for Login type SSH vs local
-
-num=0
-
-function set_batt_info() {
-	if [[ `command -v acpi` ]]; then
-		BATT_INFO=`acpi`
-	else
-		(( num += 1))
-		BATT_INFO="acip not found $num"
-	fi
-	export BATT_INFO
+# Time & Date
+function set_time_date(){
+  PRMT_TIME=`date "+%R on %A %B %d, %Y"`
+  export PRMT_TIME
 }
 
-[[ `command -v acpi` ]] && PROMPT_COMMAND="set_batt_info"
+# Machine and Login info
+# set in prompt [\u@]h:\W]
+
+# Battery Info % and time left
+#   [ 90% 4:38  ] discharging: blue
+#   [ 90% 0:28  ] charging: red
+# OSX: pmset -g batt
+#   Example:
+#     Now drawing from 'AC Power'
+#      -InternalBattery-0	100%; charged; 0:00 remaining
+# Linux: acpi
+#   Example
+#   
+#function set_batt_info(){
+#  if [ `command -v pmset` ]; then
+#
+#  fi
+#}
+
+# Current folder location
+
+# Git info
+
+# Colors for Login type SSH vs local
+
+# Prompt Command to update PS1 Vars
+
+
+PROMPT_COMMAND=set_time_date
 
 #PS1="\n\$BATT_INFO\n[\u@\h:\W]\$ "
-PS1="[\u@\h:\W]\$ "
+PS1='\n${PRMT_TIME}\n[\u@\h:\W]\$ '
+
+export PS1;
+
+# old
+#num=0
+#function set_batt_info() {
+#	if [[ `command -v acpi` ]]; then
+#		BATT_INFO=`acpi`
+#	else
+#		(( num += 1))
+#		BATT_INFO="acip not found $num"
+#	fi
+#	export BATT_INFO
+#}
+
+#[[ `command -v acpi` ]] && PROMPT_COMMAND="set_batt_info"
+
