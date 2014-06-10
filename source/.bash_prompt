@@ -37,6 +37,8 @@ set_time_date(){
 #   Example:
 #     Now drawing from 'AC Power'
 #      -InternalBattery-0	100%; charged; 0:00 remaining
+#     OR:
+#      -InternalBattery-0	100%; charged; (no estimate)
 # Linux: acpi
 #   Example
 #   
@@ -50,7 +52,7 @@ set_batt_info(){
       # use blue (discharging)
       battColorOn='\e[0;34m'  # Blue
     fi
-    PRMT_BATT=`pmset -g batt | grep "Battery-0" | awk 'gsub(/;/,"") {print $2", "$4" remaining"}'`
+    PRMT_BATT=`pmset -g batt | awk 'gsub(/;/,"") {if ($1 ~ /Battery/) print $2", "$4" remaining"}'`
   fi
   export PRMT_BATT battColorOn
 }
