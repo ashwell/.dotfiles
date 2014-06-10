@@ -64,7 +64,13 @@ set_git_info(){
   PRMT_GIT=""
   if [ `command -v git` ]; then
     # Current Branch
-    PRMT_GIT=`git branch | awk '{if ($0 ~ /\*/) print $2}'`
+    $(git branch &>/dev/null)
+    if [ $? == 0 ]; then
+      PRMT_GIT="[ `git branch | awk '{if ($1 ~ /\*/) print $2}' 2> /dev/null` ]"
+    else
+      #PRMT_GIT="[ no repo ]"
+      PRMT_GIT=""
+    fi
   fi
   export PRMT_GIT
 }
@@ -82,7 +88,7 @@ make_prompt(){
 PROMPT_COMMAND=make_prompt
 
 colorOff='\[\e[0m\]'
-PS1='\n${PRMT_TIME} -- $(echo -e "\[$battColorOn\]")${PRMT_BATT}'"\[${colorOff}\]"'\n[\u@\h:\W][ $PRMT_GIT ]\$ '
+PS1='\n${PRMT_TIME} -- $(echo -e "\[$battColorOn\]")${PRMT_BATT}'"\[${colorOff}\]"'\n[\u@\h:\W]$PRMT_GIT\$ '
 
 export PS1
 
