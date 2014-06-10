@@ -5,7 +5,7 @@
 
 # Source .colors
 #[[ -f .colors ]] && . .colors
-[[ -f ~/.dotfiles/source/.colors ]] && source ~/.dotfiles/source/.colors
+#[[ -f ~/.dotfiles/source/.colors ]] && source ~/.dotfiles/source/.colors
 
 # Cursors
 # Block
@@ -22,8 +22,8 @@
 
 # Parts of prompt
 # Time & Date
-function set_time_date(){
-  PRMT_TIME=`date "+%R on %A %B %d, %Y"`
+set_time_date(){
+  PRMT_TIME=`date "+%A %B %d at %R"`
   export PRMT_TIME
 }
 
@@ -32,7 +32,7 @@ function set_time_date(){
 
 # Battery Info % and time left
 #   [ 90% 4:38  ] discharging: blue
-#   [ 90% 0:28  ] charging: red
+#   [ 90% 0:28  ] charging: green
 # OSX: pmset -g batt
 #   Example:
 #     Now drawing from 'AC Power'
@@ -40,11 +40,20 @@ function set_time_date(){
 # Linux: acpi
 #   Example
 #   
-#function set_batt_info(){
-#  if [ `command -v pmset` ]; then
-#
-#  fi
-#}
+#battColorOn=""
+set_batt_info(){
+  # use green default (charging)
+  battColorOn='\e[0;32m'
+  if [ `command -v pmset` ]; then
+    #BATT=`pmset -g batt | grep "Battery-0"`
+    if [[ `pmset -g batt` =~ 'discharging' ]]; then
+      # use blue (discharging)
+      battColorOn='\e[0;34m'  # Blue
+    fi
+    PRMT_BATT=`pmset -g batt | grep "Battery-0" | awk 'gsub(/;/,"") {print $2", "$4" remaining"}'`
+  fi
+  export PRMT_BATT battColorOn
+}
 
 # Current folder location
 
@@ -53,14 +62,18 @@ function set_time_date(){
 # Colors for Login type SSH vs local
 
 # Prompt Command to update PS1 Vars
+make_prompt(){
+  set_time_date
+  set_batt_info
+}
 
 
-PROMPT_COMMAND=set_time_date
+PROMPT_COMMAND=make_prompt
 
-#PS1="\n\$BATT_INFO\n[\u@\h:\W]\$ "
-PS1='\n${PRMT_TIME}\n[\u@\h:\W]\$ '
+colorOff='\[\e[0m\]'
+PS1='\n${PRMT_TIME} [ $(echo -e "\[$battColorOn\]")${PRMT_BATT}'"\[${colorOff}]"' ]\n[\u@\h:\W]\$ '
 
-export PS1;
+export PS1
 
 # old
 #num=0
