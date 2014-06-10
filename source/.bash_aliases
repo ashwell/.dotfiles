@@ -16,9 +16,13 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias -- -='cd -'
 
-#File size
+# File size
 alias fs="stat -f '%z bytes'"
 alias df="df -h"
+
+# OSX Suff
+[[ "$OSTYPE" == "darwin"* ]] && alias editHosts='sudo vim /private/etc/hosts'
+[[ "$OSTYPE" == "darwin"* ]] && alias flushDNS='dscacheutil -flushcache'
 
 # Exit
 alias c="clear"
