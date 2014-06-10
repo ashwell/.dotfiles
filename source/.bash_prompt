@@ -71,7 +71,7 @@ make_prompt(){
 PROMPT_COMMAND=make_prompt
 
 colorOff='\[\e[0m\]'
-PS1='\n${PRMT_TIME} [ $(echo -e "\[$battColorOn\]")${PRMT_BATT}'"\[${colorOff}]"' ]\n[\u@\h:\W]\$ '
+PS1='\n${PRMT_TIME} -- $(echo -e "\[$battColorOn\]")${PRMT_BATT}'"\[${colorOff}\]"'\n[\u@\h:\W]\$ '
 
 export PS1
 
