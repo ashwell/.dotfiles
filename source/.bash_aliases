@@ -9,7 +9,9 @@
 # Needs a double check
 [[ "$OSTYPE" == "arch"* ]] && alias ls='command ls --color=auto'
 alias ll="ls -l"
+alias llr="ls -lR"
 alias la="ls -la"
+alias lar="ls -laR"
 
 # Navigation
 alias ..='cd ..'
