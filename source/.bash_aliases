@@ -12,6 +12,7 @@ alias ll="ls -l"
 alias llr="ls -lR"
 alias la="ls -la"
 alias lar="ls -laR"
+alias hur="clear;pwd;ll" 
 
 # Navigation
 alias ..='cd ..'
