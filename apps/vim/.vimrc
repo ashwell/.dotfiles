@@ -60,7 +60,11 @@ set background=dark
 colorscheme solarized
 filetype on
 filetype plugin on
+
 au BufNewFile,BufRead *.ctp set filetype=php
+
+" .jshintrc syntax highlighting set to javascript
+au BufNewFile,BufRead *.jshintrc set syn=javascript
 
 " Set less color code
 au BufNewFile,BufRead *.less set syn=css
