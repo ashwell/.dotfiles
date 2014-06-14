@@ -56,8 +56,14 @@ filetype plugin indent on    " required
 
 " enable syntax highlighting
 syntax on
+" Solarized theme, dark or light
 set background=dark
 colorscheme solarized
+" cyan comments suck.  Use light grey instead.
+hi Comment ctermfg=LightGrey guifg=LightGrey
+
+
+" Are these redundent?
 filetype on
 filetype plugin on
 
@@ -66,7 +72,7 @@ au BufNewFile,BufRead *.ctp set filetype=php
 " .jshintrc syntax highlighting set to javascript
 au BufNewFile,BufRead *.jshintrc set syn=javascript
 
-" Set less color code
+" Set LESS color code
 au BufNewFile,BufRead *.less set syn=css
 " au BufNewFile,BufRead *.less set filetype=less
 
@@ -98,23 +104,20 @@ set esckeys
 " get easier to use and more user friendly vim defaults
 " CAUTION: This option breaks some vi compatibility. 
 "          Switch it off if you prefer real vi compatibility
-set nocompatible
+" set nocompatible
 
 " expand tabs to spaces.  makes sense if we want people with other editors
 " to see the file looking the same.
 set expandtab
 
+" Show special chars
+set list
+
 " stop beeping already!
 set noerrorbells
 
-" show matching brackets
-set showmatch
-
 " we like bash
 set shell=bash
-
-" cyan comments suck.  Use light grey instead.
-hi Comment ctermfg=LightGrey guifg=LightGrey
 
 " we almost always use a dark background
 "set background=dark
@@ -148,11 +151,6 @@ set hlsearch
 
 " Increase buffer for clipboard
 set viminfo='100,h
-
-" Added by Ryan Bogle
-" set nowrap
-"call pathogen#infect()
-"call pathogen#runtime_append_all_bundles()
 
 " .vimrc ends here
 
