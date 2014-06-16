@@ -111,7 +111,8 @@ set esckeys
 set expandtab
 
 " Show special chars
-set list
+"set list
+"set nolist
 
 " stop beeping already!
 set noerrorbells
