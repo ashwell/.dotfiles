@@ -123,7 +123,7 @@ set shell=bash
 " we almost always use a dark background
 "set background=dark
 
-" Various options for a tab stop of 4 spaces
+" Various options for a tab stop of 2 spaces
 set cinoptions=>2
 set shiftwidth=2
 set tabstop=2
@@ -152,6 +152,9 @@ set hlsearch
 
 " Increase buffer for clipboard
 set viminfo='100,h
+
+" Keep Cursor in middle
+set scrolloff=999
 
 " .vimrc ends here
 
