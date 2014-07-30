@@ -49,8 +49,8 @@ filetype plugin indent on    " required
 
 " /etc/vimrc (configuration file for vim only)
 " author: Klaus Franken     <kfr@suse.de>
-" author: Werner Fink       <werner@suse.de> 
-" author: Florian La Roche  <florian@suse.de> 
+" author: Werner Fink       <werner@suse.de>
+" author: Florian La Roche  <florian@suse.de>
 " version: 00/01/20
 " commented lines start with `"'
 
@@ -102,7 +102,7 @@ set showmode
 set esckeys
 
 " get easier to use and more user friendly vim defaults
-" CAUTION: This option breaks some vi compatibility. 
+" CAUTION: This option breaks some vi compatibility.
 "          Switch it off if you prefer real vi compatibility
 " set nocompatible
 
@@ -158,3 +158,10 @@ set scrolloff=999
 
 " .vimrc ends here
 
+" Highlight trailing whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
