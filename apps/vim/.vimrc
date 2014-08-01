@@ -154,6 +154,7 @@ set hlsearch
 set viminfo='100,h
 
 " Keep Cursor in middle
+:nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
 set scrolloff=999
 
 " .vimrc ends here
