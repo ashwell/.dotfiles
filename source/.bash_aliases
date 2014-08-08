@@ -12,8 +12,8 @@ alias ll="ls -l"
 alias llr="ls -lR"
 alias la="ls -la"
 alias lar="ls -laR"
-alias cl="clear;pwd;ll" 
-alias cla="clear;pwd;la" 
+alias cl="clear;pwd;ll"
+alias cla="clear;pwd;la"
 
 # Navigation
 alias ..='cd ..'
@@ -38,5 +38,5 @@ alias gfshow="git fetch origin && echo 'fetched origin' && git remote show origi
 alias cstat="clear && git status"
 
 # Homebrew
-[[ `command brew -v` == "Homebrew"* ]] && alias brewu="brew update && brew doctor"
+[[ `command brew -v` == "Homebrew"* ]] && alias brewu="brew update && brew doctor && echo 'outdated:\n' && brew outdated"
 
