@@ -38,5 +38,5 @@ alias gfshow="git fetch origin && echo 'fetched origin' && git remote show origi
 alias cstat="clear && git status"
 
 # Homebrew
-[[ `command brew -v` == "Homebrew"* ]] && alias brewu="brew update && brew doctor && echo 'outdated:\n' && brew outdated"
+[[ `command brew -v` == "Homebrew"* ]] && alias brewu="brew update && brew doctor && echo 'outdated:' && brew outdated"
 
