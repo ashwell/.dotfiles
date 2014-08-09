@@ -55,12 +55,15 @@ filetype plugin indent on    " required
 " commented lines start with `"'
 
 " enable syntax highlighting
-syntax on
+syntax enable
 " Solarized theme, dark or light
 set background=dark
+let g:solarized_visibility="high"
 colorscheme solarized
 " cyan comments suck.  Use light grey instead.
-hi Comment ctermfg=LightGrey guifg=LightGrey
+" dark comments
+"hi Comment ctermfg=LightGrey guifg=LightGrey
+" light comments
 
 
 " Are these redundent?
@@ -166,3 +169,4 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+
