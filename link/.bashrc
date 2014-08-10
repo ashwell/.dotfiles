@@ -9,8 +9,17 @@
 [[ `command -v less` ]] && PAGER=`command -v less`
 [[ `command -v vim` ]] && EDITOR=`command -v vim` ; VISUAL=`command -v vim`
 
+# NPM Global install location
+NPM_PACKAGES="~/.npm-packages"
+
 # CUSTOM PATH
-PATH="/usr/local/bin:~/.dotfiles/bin:$PATH"
+PATH="/usr/local/bin:~/.dotfiles/bin:$NPM_PACKAGES/bin:$PATH"
+
+# NPM Manpath
+MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+
+# Tell NODE about custom NPM global location
+NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 
 # CUSTOM CDPATH
 [ -d ~/workspace ] && CDPATH="~/workspace"
@@ -31,5 +40,5 @@ PATH="/usr/local/bin:~/.dotfiles/bin:$PATH"
 [[ `command mono -v` ]] && export MONO_GAC_PREFIX="/usr/local"
 
 
-export PATH CDPATH INPUTRC PAGER EDITOR VISUAL
+export PATH CDPATH INPUTRC PAGER EDITOR VISUAL NPM_PACKAGES
 
