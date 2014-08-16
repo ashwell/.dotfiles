@@ -14,6 +14,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'mileszs/ack.vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'terryma/vim-multiple-cursors'
 "
 " plugin from http://vim-scripts.org/vim/scripts.html
 "Plugin 'L9'
@@ -91,6 +92,10 @@ set ignorecase
 
 " show cursor line and column in the status line
 set ruler
+
+" highlight line in insert mode
+autocmd InsertEnter * set cul
+autocmd InsertLeave * set nocul
 
 " show matching brackets
 set showmatch
