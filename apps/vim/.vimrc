@@ -19,6 +19,7 @@ Plugin 'terryma/vim-multiple-cursors'
 " plugin from http://vim-scripts.org/vim/scripts.html
 "Plugin 'L9'
 Plugin 'closetag.vim'
+Plugin 'ShowTrailingWhitespace'
 "
 " Git plugin not hosted on GitHub
 "Plugin 'git://git.wincent.com/command-t.git'
@@ -167,11 +168,6 @@ set scrolloff=999
 
 " .vimrc ends here
 
-" Highlight trailing whitespace
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+" ShowTrailingWhitespace Settings
+highlight ShowTrailingWhitespace ctermbg=red
 

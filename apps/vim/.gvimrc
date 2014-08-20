@@ -2,3 +2,5 @@
 set background=light
 set guifont=Anonymous\ Pro:h16
 set spell
+
+highlight ShowTrailingWhitespace guibg=red
