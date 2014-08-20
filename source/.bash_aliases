@@ -36,6 +36,9 @@ alias lg="logout"
 # Git Short Commands (see .gitconfig for git aliases)
 alias gfshow="git fetch origin && echo 'fetched origin' && git remote show origin"
 alias cstat="clear && git status"
+alias git-behind="git branch -vv | grep behind"
+alias git-ahead="git branch -vv | grep ahead"
+alias git-to-sync="git branch -vv | grep 'behind\|ahead'"
 
 # Homebrew
 [[ `command brew -v` == "Homebrew"* ]] && alias brewu="brew update && brew doctor && echo 'outdated:' && brew outdated"
