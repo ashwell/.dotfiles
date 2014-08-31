@@ -15,6 +15,8 @@ Plugin 'mileszs/ack.vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'marijnh/tern_for_vim'
+Plugin 'Valloric/YouCompleteMe'
 "
 " plugin from http://vim-scripts.org/vim/scripts.html
 "Plugin 'L9'
@@ -171,3 +173,6 @@ set scrolloff=999
 " ShowTrailingWhitespace Settings
 highlight ShowTrailingWhitespace ctermbg=red
 
+let g:ycm_add_preview_to_completeopt=0
+let g:ycm_confirm_extra_conf=0
+set completeopt-=preview
