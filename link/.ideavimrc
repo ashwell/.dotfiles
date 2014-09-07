@@ -1,0 +1,12 @@
+
+set hlsearch
+set wrapscan
+set ignorecase
+set smartcase
+
+set showmode
+
+set visualbell
+
+set scrolloff=999
+:nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
