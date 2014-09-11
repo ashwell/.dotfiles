@@ -9,4 +9,7 @@ set showmode
 set visualbell
 
 set scrolloff=999
-:nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
+:noremap <Leader>zz :set scrolloff=000<CR>
+:noremap <Leader>zc :set scrolloff=999<CR>
+":noremap zz <M-CR>
+
