@@ -41,7 +41,7 @@ set_time_date(){
 #      -InternalBattery-0	100%; charged; (no estimate)
 # Linux: acpi
 #   Example
-#   
+#
 #battColorOn=""
 set_batt_info(){
   # use green default (charging)
@@ -90,6 +90,12 @@ make_prompt(){
   set_time_date
   set_batt_info
   #set_git_info
+
+  # iTerm Tab Title
+  if [ $ITERM_SESSION_ID ]; then
+    echo -ne "\033];${PWD##*/}\007"
+  fi
+
 }
 
 
