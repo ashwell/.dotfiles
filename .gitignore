@@ -1,2 +1,5 @@
+.DS_Store
 .netrwhist
 **/doc/tags
+apps/vim/.vim/bundle/**
+
