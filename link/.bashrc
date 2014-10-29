@@ -13,7 +13,10 @@
 PATH="/usr/local/bin:~/.dotfiles/bin:$PATH"
 
 # CUSTOM CDPATH
-[ -d ~/workspace ] && CDPATH="~/workspace"
+[ -d ~/repos ] && CDPATH="$CDPATH:~/repos"
+[ -d ~/repos/ed ] && CDPATH="$CDPATH:~/repos/ed"
+[ -d ~/repos/mh ] && CDPATH="$CDPATH:~/repos/mh"
+[ -d ~/workspace ] && CDPATH="$CDPATH:~/workspace"
 [ -d ~/workspace/hound ] && CDPATH="$CDPATH:~/workspace/hound"
 
 # INPUTRC
@@ -28,7 +31,7 @@ PATH="/usr/local/bin:~/.dotfiles/bin:$PATH"
 [ -f ~/.dotfiles/source/.bash_prompt ] && source ~/.dotfiles/source/.bash_prompt
 
 [[ -f `brew --prefix`/etc/bash_completion ]] && source `brew --prefix`/etc/bash_completion
-[[ `command mono -v` ]] && export MONO_GAC_PREFIX="/usr/local"
+[[ `command mono -v 2> /dev/null` ]] && export MONO_GAC_PREFIX="/usr/local"
 
 
 export PATH CDPATH INPUTRC PAGER EDITOR VISUAL NPM_PACKAGES
