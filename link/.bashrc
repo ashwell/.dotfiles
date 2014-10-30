@@ -14,6 +14,8 @@ PATH="/usr/local/bin:~/.dotfiles/bin:$PATH"
 
 # CUSTOM CDPATH
 [ -d ~/repos ] && CDPATH="$CDPATH:~/repos"
+[ -d ~/repos/gh ] && CDPATH="$CDPATH:~/repos/gh"
+[ -d ~/repos/bb ] && CDPATH="$CDPATH:~/repos/bb"
 [ -d ~/repos/ed ] && CDPATH="$CDPATH:~/repos/ed"
 [ -d ~/repos/mh ] && CDPATH="$CDPATH:~/repos/mh"
 [ -d ~/workspace ] && CDPATH="$CDPATH:~/workspace"
