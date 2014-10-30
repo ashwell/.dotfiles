@@ -1,5 +1,5 @@
 #
-# ~/.bash_aliases
+# ~/.aliases
 #
 
 [[ `command vim --version` ]] && alias vi=vim
@@ -41,5 +41,6 @@ alias git-ahead="git branch -vv --color=always | grep ahead"
 alias git-to-sync="git branch -vv --color=always | grep 'behind\|ahead'"
 
 # Homebrew
-[[ `command brew -v` == "Homebrew"* ]] && alias brewu="brew update && brew doctor && echo 'outdated:' && brew outdated"
+[[ `command -v brew` == *"brew" ]] && alias brewu="brew update && brew doctor && echo 'outdated:' && brew outdated"
+[[ `command -v brew` == *"brew" ]] && alias brewcasku="brew cask update && brew cask doctor"
 

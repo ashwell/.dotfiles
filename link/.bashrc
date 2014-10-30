@@ -29,7 +29,7 @@ PATH="/usr/local/bin:~/.dotfiles/bin:$PATH"
 [[ "$BASH_VERSION" == "4"* ]] && shopt -s globstar
 
 # Source files, Should change to function, maybe change the folder structure a little too
-[ -f ~/.dotfiles/source/.bash_aliases ] && source ~/.dotfiles/source/.bash_aliases
+[ -f ~/.dotfiles/source/.aliases ] && source ~/.dotfiles/source/.aliases
 [ -f ~/.dotfiles/source/.bash_prompt ] && source ~/.dotfiles/source/.bash_prompt
 
 [[ -f `brew --prefix`/etc/bash_completion ]] && source `brew --prefix`/etc/bash_completion
