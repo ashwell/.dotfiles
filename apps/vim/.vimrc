@@ -15,6 +15,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'editorconfig/editorconfig-vim'
 "Plugin 'marijnh/tern_for_vim'
 "Plugin 'Valloric/YouCompleteMe'
 "
