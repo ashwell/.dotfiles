@@ -38,7 +38,8 @@ alias gfshow="git fetch origin && echo 'fetched origin' && git remote show origi
 alias cstat="clear && git status"
 alias git-behind="git branch -vv --color=always | grep behind"
 alias git-ahead="git branch -vv --color=always | grep ahead"
-alias git-to-sync="git branch -vv --color=always | grep 'behind\|ahead'"
+alias git-gone="git branch -vv --color=always | grep gone"
+alias git-to-sync="git branch -vv --color=always | grep 'behind\|ahead\|gone'"
 
 # Homebrew
 [[ `command -v brew` == *"brew" ]] && alias brewu="brew update && brew doctor && echo 'outdated:' && brew outdated"
