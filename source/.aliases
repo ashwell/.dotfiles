@@ -1,3 +1,4 @@
+# vi:syntax=sh
 #
 # ~/.aliases
 #
@@ -25,8 +26,11 @@ alias fs="stat -f '%z bytes'"
 alias df="df -h"
 
 # OSX Suff
-[[ "$OSTYPE" == "darwin"* ]] && alias editHosts='sudo vim /private/etc/hosts'
-[[ "$OSTYPE" == "darwin"* ]] && alias flushDNS='dscacheutil -flushcache'
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  alias editHosts='sudo vim /private/etc/hosts'
+  alias flushDNS='dscacheutil -flushcache'
+  alias renewip="sudo ipconfig set en0 BOOTP && sudo ipconfig set en0 DHCP"
+fi
 
 # Exit
 alias c="clear"
@@ -42,6 +46,8 @@ alias git-gone="git branch -vv --color=always | grep gone"
 alias git-to-sync="git branch -vv --color=always | grep 'behind\|ahead\|gone'"
 
 # Homebrew
-[[ `command -v brew` == *"brew" ]] && alias brewu="brew update && brew doctor && echo 'outdated:' && brew outdated"
-[[ `command -v brew` == *"brew" ]] && alias brewcasku="brew cask update && brew cask doctor"
+if [[ `command -v brew` == *"brew" ]]; then
+  alias brewu="brew update && brew doctor && echo 'outdated:' && brew outdated"
+  alias brewcasku="brew cask update && brew cask doctor"
+fi
 
