@@ -29,7 +29,7 @@ alias df="df -h"
 if [[ "$OSTYPE" == "darwin"* ]]; then
   alias editHosts='sudo vim /private/etc/hosts'
   alias flushDNS='dscacheutil -flushcache'
-  alias renewip="sudo ipconfig set en0 BOOTP && sudo ipconfig set en0 DHCP"
+  alias renewip="flushDNS && sudo ipconfig set en0 BOOTP && sudo ipconfig set en0 DHCP"
 fi
 
 # Exit
