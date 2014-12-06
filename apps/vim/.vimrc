@@ -84,6 +84,9 @@ au BufNewFile,BufRead *.jshintrc set syn=javascript
 au BufNewFile,BufRead *.less set syn=css
 " au BufNewFile,BufRead *.less set filetype=less
 
+" Set Default Encoding
+set encoding=utf-8
+
 " automatically indent lines (default)
 " set noautoindent
 set autoindent
