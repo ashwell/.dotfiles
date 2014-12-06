@@ -1,0 +1,45 @@
+#!/bin/bash
+# vi:syntax=sh
+# Some simple things I do often
+#
+
+# Checks out branch $1
+# "git pull"s
+# Check back out original branch
+# Execute via `rj pull branch-name`
+switchAndPull ()
+{
+  git branch > /dev/null 2>&1
+  if [ $? -ne 0 ]; then
+    echo "Not in a git repo...exiting"
+    return;
+  elif [ $# -eq 0 ]; then
+    echo "Don't know what to pull...exiting"
+    return;
+  elif [ -z $(git branch | grep $1) ]; then
+    echo "Branch $1 does not exist...exiting"
+    return;
+  fi
+
+  # Save Branch to switch back to
+  local ogBranch=`git branch | awk '/^\*/ {print $2}'`
+  echo "Currently on $ogBranch"
+
+  # Do magic
+  git checkout $1 && git pull && git checkout $ogBranch
+}
+
+
+# Program Start
+# exit on no arguments
+if [ $# -eq 0 ]; then
+  echo "No arguments supplied"
+fi
+
+# $1: pull
+# $2: branch-name
+if [ "$1" == "pull" ]; then
+#  echo "Performing pull and switch for $2"
+  switchAndPull $2
+fi
+
