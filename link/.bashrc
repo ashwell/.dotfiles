@@ -1,3 +1,4 @@
+# vi:syntax=sh
 #
 # ~/.bashrc
 #
@@ -32,7 +33,11 @@ PATH="/usr/local/bin:~/.dotfiles/bin:$PATH"
 [ -f ~/.dotfiles/source/.aliases ] && source ~/.dotfiles/source/.aliases
 [ -f ~/.dotfiles/source/.bash_prompt ] && source ~/.dotfiles/source/.bash_prompt
 
-[[ -f `brew --prefix`/etc/bash_completion ]] && source `brew --prefix`/etc/bash_completion
+# if has homebrew
+if [[ `command -v brew` == *"brew" ]]; then
+  [[ -f `brew --prefix`/etc/bash_completion ]] && source `brew --prefix`/etc/bash_completion
+fi
+
 [[ `command mono -v 2> /dev/null` ]] && export MONO_GAC_PREFIX="/usr/local"
 
 
