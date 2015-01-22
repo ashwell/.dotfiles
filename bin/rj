@@ -43,3 +43,10 @@ if [ "$1" == "pull" ]; then
   switchAndPull $2
 fi
 
+# $1: vagrant
+# $2: start
+if [ "$1" == "vagrant" ]; then
+  if [ "$2" == "start" ]; then
+    vagrant up && vagrant ssh -c start-gulp
+  fi
+fi
