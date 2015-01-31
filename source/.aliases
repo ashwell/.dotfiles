@@ -16,6 +16,9 @@ alias lar="ls -laR"
 alias cl="clear;pwd;ll"
 alias cla="clear;pwd;la"
 
+# Redo last with sudo
+alias fuck='sudo $(fc -nl -1)'
+
 # Navigation
 alias ..='cd ..'
 alias ...='cd ../..'
