@@ -9,10 +9,10 @@
 [[ "$OSTYPE" == "darwin"* ]] && alias ls='command ls -G'
 # Needs a double check
 [[ "$OSTYPE" == "arch"* ]] && alias ls='command ls --color=auto'
-alias ll="ls -l"
-alias llr="ls -lR"
-alias la="ls -la"
-alias lar="ls -laR"
+alias ll="ls -lh"
+alias llr="ls -lhR"
+alias la="ls -lha"
+alias lar="ls -lhaR"
 alias cl="clear;pwd;ll"
 alias cla="clear;pwd;la"
 

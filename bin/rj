@@ -29,6 +29,15 @@ switchAndPull ()
   git checkout $1 && git pull && git checkout $ogBranch
 }
 
+fetchAndCheck ()
+{
+  git branch > /dev/null 2>&1
+  if [ $? -ne 0 ]; then
+    echo "Not in a git repo...exiting"
+    return;
+  fi
+  clear; git fo && (git branch -vv --color=always | grep 'behind\|ahead\|gone')
+}
 
 # Program Start
 # exit on no arguments
@@ -49,4 +58,9 @@ if [ "$1" == "vagrant" ]; then
   if [ "$2" == "start" ]; then
     vagrant up && vagrant ssh -c start-gulp
   fi
+fi
+
+# $1: fetch
+if [ "$1" == "fetch" ]; then
+  fetchAndCheck
 fi

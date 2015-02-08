@@ -7,6 +7,7 @@
 [push]
 	default = simple
 [alias]
+	fo = fetch origin
 	rso = remote show origin
 	fdry = fetch origin --dry-run
 	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
