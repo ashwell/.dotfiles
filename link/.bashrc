@@ -41,6 +41,5 @@ fi
 [[ `command mono -v 2> /dev/null` ]] && export MONO_GAC_PREFIX="/usr/local"
 # [[ `command -v phantomjs 2> /dev/null` ]] && export PHANTOMJS_BIN=`command -v phantomjs`
 
-
-export PATH CDPATH INPUTRC PAGER EDITOR VISUAL NPM_PACKAGES
+export PATH CDPATH INPUTRC PAGER EDITOR VISUAL
 
