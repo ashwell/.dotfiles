@@ -2,8 +2,11 @@
 	name = Ryan Bogle
 [core]
 	excludesfile = ~/.gitignore_global
+	longpaths = true
 [color]
 	ui = true
+	branch = auto
+	status = auto
 [push]
 	default = simple
 [alias]
