@@ -36,7 +36,7 @@ fetchAndCheck ()
     echo "Not in a git repo...exiting"
     return;
   fi
-  clear; git fo && (git branch -vv --color=always | grep 'behind\|ahead\|gone')
+  clear; git fetch origin && git remote prune origin && (git branch -vv --color=always | grep 'behind\|ahead\|gone')
 }
 
 # Program Start
