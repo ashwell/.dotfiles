@@ -43,7 +43,7 @@ alias lg="logout"
 
 # Git Short Commands (see .gitconfig for git aliases)
 alias gfshow="git fetch origin && echo 'fetched origin' && git remote show origin"
-alias cstat="clear && git status"
+alias cstat="clear && pwd && git status"
 alias git-behind="git branch -vv --color=always | grep behind"
 alias git-ahead="git branch -vv --color=always | grep ahead"
 alias git-gone="git branch -vv --color=always | grep gone"
