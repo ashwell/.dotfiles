@@ -22,7 +22,7 @@
 
 # Parts of prompt
 # Time & Date
-set_time_date(){
+set_time_date() {
   PRMT_TIME=`date "+%A %B %d at %R"`
   export PRMT_TIME
 }

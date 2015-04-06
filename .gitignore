@@ -2,4 +2,6 @@
 .netrwhist
 **/doc/tags
 apps/vim/.vim/bundle/**
+**/fish_history
+**/fishd.*
 
