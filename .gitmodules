@@ -1,0 +1,3 @@
+[submodule "apps/fish/nvm-wrapper"]
+	path = apps/fish/nvm-wrapper
+	url = git@github.com:passcod/nvm-fish-wrapper.git
