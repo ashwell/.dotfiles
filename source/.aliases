@@ -17,7 +17,11 @@ alias cl="clear;pwd;ll"
 alias cla="clear;pwd;la"
 
 # Redo last with sudo
-alias fuck='sudo $(fc -nl -1)'
+if [[ `thefuck` == "echo No fuck given" ]]; then
+  alias fuck='$(thefuck $(fc -ln -1))'
+else
+  alias fuck='sudo $(fc -nl -1)'
+fi
 
 # Navigation
 alias ..='cd ..'
