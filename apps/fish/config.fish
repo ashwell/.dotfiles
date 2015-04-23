@@ -29,14 +29,11 @@ end
 # CUSTOM PATHS
 set -x PATH $HOME/.dotfiles/bin /usr/local/bin $PATH
 
-# NVM fish wrapper
-source $HOME/.config/fish/nvm-wrapper/nvm.fish
-
 # Load Aliases "in" aliases function file
 aliases >/dev/null
 
-alias routine "brewu;brewcasku;cd $HOME/repos/ed/clientapp;ostorm"
+# NVM fish wrapper
+source $HOME/.config/fish/nvm-wrapper/nvm.fish
 
-function fish_greeting
-  archey -c
-end
+source ./profile.fish
+

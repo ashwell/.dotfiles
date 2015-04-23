@@ -169,8 +169,11 @@ set hlsearch
 set viminfo='100,h
 
 " Keep Cursor in middle
-:nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
+nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
 set scrolloff=999
+
+" Map // to search for visual selection
+vnoremap // y/<C-R>"<CR>
 
 " .vimrc ends here
 
