@@ -35,5 +35,5 @@ aliases >/dev/null
 # NVM fish wrapper
 source $HOME/.config/fish/nvm-wrapper/nvm.fish
 
-source ./profile.fish
+source ~/.config/fish/profile.fish
 
