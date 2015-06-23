@@ -27,7 +27,7 @@ if not set -q CDPATH
 end
 
 # CUSTOM PATHS
-set -x PATH $HOME/.dotfiles/bin /usr/local/bin $PATH
+set -x PATH $HOME/.dotfiles/bin /usr/local/bin /usr/local/sbin $PATH
 
 # Load Aliases "in" aliases function file
 aliases >/dev/null
