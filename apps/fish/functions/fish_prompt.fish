@@ -51,6 +51,13 @@ function fish_prompt --description 'Write out the prompt'
   printf '%s' (prompt_pwd)
 	set_color normal
 
+  # Node Version (only when not on nvm default)
+  if test ! (nvm ls default | grep (node --version))
+    set_color 199696
+    printf ' [%s]' (node --version)
+    set_color normal
+  end
+
   # GIT
 	printf '%s ' (__fish_git_prompt)
 
