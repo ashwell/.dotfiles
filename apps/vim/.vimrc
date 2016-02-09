@@ -10,19 +10,19 @@ Plugin 'gmarik/Vundle.vim'
 "
 " plugin on GitHub repo
 "Plugin 'tpope/vim-fugitive'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'mileszs/ack.vim'
-Plugin 'Raimondi/delimitMate'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'editorconfig/editorconfig-vim'
+"Plugin 'altercation/vim-colors-solarized'
+"Plugin 'mileszs/ack.vim'
+"Plugin 'Raimondi/delimitMate'
+"Plugin 'scrooloose/nerdcommenter'
+"Plugin 'terryma/vim-multiple-cursors'
+"Plugin 'editorconfig/editorconfig-vim'
 "Plugin 'marijnh/tern_for_vim'
 "Plugin 'Valloric/YouCompleteMe'
 "
 " plugin from http://vim-scripts.org/vim/scripts.html
 "Plugin 'L9'
-Plugin 'closetag.vim'
-Plugin 'ShowTrailingWhitespace'
+"Plugin 'closetag.vim'
+"Plugin 'ShowTrailingWhitespace'
 "
 " Git plugin not hosted on GitHub
 "Plugin 'git://git.wincent.com/command-t.git'
@@ -63,8 +63,8 @@ filetype plugin indent on    " required
 syntax enable
 " Solarized theme, dark or light
 set background=dark
-let g:solarized_visibility="high"
-colorscheme solarized
+"let g:solarized_visibility="high"
+"colorscheme solarized
 " cyan comments suck.  Use light grey instead.
 " dark comments
 "hi Comment ctermfg=LightGrey guifg=LightGrey
