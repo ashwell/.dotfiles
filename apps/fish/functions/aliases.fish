@@ -1,5 +1,6 @@
 alias vi "vim"
 alias c=clear
+alias la "ls -a"
 alias cl "clear;pwd;ll"
 alias cla "clear;pwd;la"
 alias ...="cd ../../"
@@ -10,7 +11,7 @@ if test (brew --prefix)
 end
 
 if test (uname -a | grep "Darwin*")
-  alias editHosts "sudo vim /private/etc/hosts"
+  alias editHosts "sudo mvim /private/etc/hosts"
   alias flushDNS "dscacheutil -flushcache"
   alias renewip "flushDNS ;and sudo ipconfig set en0 BOOTP ;and sudo ipconfig set en0 DHCP"
   alias ostorm "open -a WebStorm"

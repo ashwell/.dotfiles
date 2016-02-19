@@ -24,9 +24,10 @@ switchAndPull ()
   # Save Branch to switch back to
   local ogBranch=`git branch | awk '/^\*/ {print $2}'`
   echo "Currently on $ogBranch"
+  echo "Checking out $1"
 
   # Do magic
-  git checkout $1 && git pull && git checkout $ogBranch
+  git checkout $1 && git pull && echo "$1 was pulled, checking out $ogBranch" && git checkout $ogBranch
 }
 
 fetchAndCheck ()
@@ -36,7 +37,7 @@ fetchAndCheck ()
     echo "Not in a git repo...exiting"
     return;
   fi
-  clear; git fetch origin && git remote prune origin && (git branch -vv --color=always | grep 'behind\|ahead\|gone')
+  clear; echo "fetching origin" && git fetch origin && echo "pruning origin" && git remote prune origin && echo "branches in need of updates(?): " && (git branch -vv --color=always | grep 'behind\|ahead\|gone')
 }
 
 # Program Start
