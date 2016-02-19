@@ -11,7 +11,8 @@
 [[ "$OSTYPE" == "arch"* ]] && alias ls='command ls --color=auto'
 alias ll="ls -lh"
 alias llr="ls -lhR"
-alias la="ls -lha"
+alias la="ls -a"
+alias lla="ls -lha"
 alias lar="ls -lhaR"
 alias cl="clear;pwd;ll"
 alias cla="clear;pwd;la"
@@ -34,7 +35,7 @@ alias df="df -h"
 
 # OSX Suff
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  alias editHosts='sudo vim /private/etc/hosts'
+  alias editHosts='sudo mvim /private/etc/hosts'
   alias flushDNS='dscacheutil -flushcache'
   alias renewip="flushDNS && sudo ipconfig set en0 BOOTP && sudo ipconfig set en0 DHCP"
   [[ `command -v wstorm` == *"wstorm" ]] && alias ostorm="open -a WebStorm"
