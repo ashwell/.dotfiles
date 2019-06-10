@@ -57,3 +57,15 @@ fi
 if [ "$1" == "fetch" ]; then
   fetchAndCheck
 fi
+
+# $1: sync
+# $2: branch-name
+if [ "$1" == "sync" ]; then
+  if [ "$2" == "" ]; then
+    echo "No branch name provided..."
+    exit
+  fi
+  switchAndPull $2
+  echo "Rebasing current branch against $2"
+  git rebase $2
+fi
