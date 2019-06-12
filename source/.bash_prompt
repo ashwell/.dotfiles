@@ -52,7 +52,7 @@ set_batt_info(){
       # use blue (discharging)
       battColorOn='\e[0;34m'  # Blue
     fi
-    PRMT_BATT=`pmset -g batt | awk 'gsub(/;/,"") {if ($1 ~ /Battery/) print $3", "$5" remaining"}'`
+    PRMT_BATT=`pmset -g batt | awk 'gsub(/;/,"") {if ($1 ~ /Battery/) print $3", "$4" "$5" "$6""}'`
   fi
   export PRMT_BATT battColorOn
 }
