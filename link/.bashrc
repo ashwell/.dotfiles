@@ -28,7 +28,7 @@ PATH="/usr/local/bin:/usr/local/sbin:~/.dotfiles/bin:$PATH:./node_modules/.bin"
 
 # Source files, Should change to function, maybe change the folder structure a little too
 [ -f ~/.dotfiles/source/.aliases ] && source ~/.dotfiles/source/.aliases
-# [ -f ~/.dotfiles/source/.bash_prompt ] && source ~/.dotfiles/source/.bash_prompt
+[ -f ~/.dotfiles/source/.bash_prompt ] && source ~/.dotfiles/source/.bash_prompt
 [ -f ~/.dotfiles/source/.commacd.bash ] && source ~/.dotfiles/source/.commacd.bash
 
 # if has homebrew
