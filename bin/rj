@@ -53,15 +53,19 @@ if [ "$1" == "pull" ]; then
   switchAndPull $2
 fi
 
-# $1: vagrant
-# $2: start
-if [ "$1" == "vagrant" ]; then
-  if [ "$2" == "start" ]; then
-    vagrant up && vagrant ssh -c start-gulp
-  fi
-fi
-
 # $1: fetch
 if [ "$1" == "fetch" ]; then
   fetchAndCheck
+fi
+
+# $1: sync
+# $2: branch-name
+if [ "$1" == "sync" ]; then
+  if [ "$2" == "" ]; then
+    echo "No branch name provided..."
+    exit
+  fi
+  switchAndPull $2
+  echo "Rebasing current branch against $2"
+  git rebase $2
 fi

@@ -52,7 +52,7 @@ set_batt_info(){
       # use blue (discharging)
       battColorOn='\e[0;34m'  # Blue
     fi
-    PRMT_BATT=`pmset -g batt | awk 'gsub(/;/,"") {if ($1 ~ /Battery/) print $2", "$4" remaining"}'`
+    PRMT_BATT=`pmset -g batt | awk 'gsub(/;/,"") {if ($1 ~ /Battery/) print $3", "$4" "$5" "$6""}'`
   fi
   export PRMT_BATT battColorOn
 }
@@ -60,6 +60,10 @@ set_batt_info(){
 # Current folder location
 
 # Git info
+# Source Git Prompt Function
+[[ -f ~/.dotfiles/source/.git-prompt.sh ]] && source ~/.dotfiles/source/.git-prompt.sh
+
+# Setup Prompt (not used?)
 set_git_info(){
   PRMT_GIT=""
   if [ `command -v git` ]; then
@@ -74,6 +78,7 @@ set_git_info(){
   fi
   export PRMT_GIT
 }
+
 # Options for __git_ps1
 GIT_PS1_SHOWDIRTYSTATE=true
 GIT_PS1_SHOWSTASHSTATE=true
@@ -102,7 +107,7 @@ make_prompt(){
 PROMPT_COMMAND=make_prompt
 
 colorOff='\[\e[0m\]'
-PS1='\n${PRMT_TIME} -- $(echo -e "\[$battColorOn\]")${PRMT_BATT}'"\[${colorOff}\]"'\n[\u@\h:\W]$(__git_ps1 "[ %s ]")[$?]\$ '
+PS1='\n${PRMT_TIME} -- $(echo -e "\[$battColorOn\]")${PRMT_BATT}'"\[${colorOff}\]"'\n[\u@\h:\W]$(__git_ps1 "[ %s ]")\n[$?]\$ '
 #PS1='\n${PRMT_TIME} -- $(echo -e "\[$battColorOn\]")${PRMT_BATT}'"\[${colorOff}\]"'\n[\u@\h:\W]$PRMT_GIT\$ '
 
 export PS1
