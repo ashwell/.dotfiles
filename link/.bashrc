@@ -15,10 +15,7 @@ PATH="/usr/local/bin:/usr/local/sbin:~/.dotfiles/bin:$PATH:./node_modules/.bin"
 
 # CUSTOM CDPATH
 [ -d ~/repos ] && CDPATH="$CDPATH:~/repos"
-[ -d ~/repos/gh ] && CDPATH="$CDPATH:~/repos/gh"
-[ -d ~/repos/bb ] && CDPATH="$CDPATH:~/repos/bb"
-[ -d ~/repos/ed ] && CDPATH="$CDPATH:~/repos/ed"
-[ -d ~/repos/mh ] && CDPATH="$CDPATH:~/repos/mh"
+[ -d ~/repos/jsla ] && CDPATH="$CDPATH:~/repos/jsla"
 [ -d ~/workspace ] && CDPATH="$CDPATH:~/workspace"
 [ -d ~/workspace/hound ] && CDPATH="$CDPATH:~/workspace/hound"
 
@@ -31,7 +28,7 @@ PATH="/usr/local/bin:/usr/local/sbin:~/.dotfiles/bin:$PATH:./node_modules/.bin"
 
 # Source files, Should change to function, maybe change the folder structure a little too
 [ -f ~/.dotfiles/source/.aliases ] && source ~/.dotfiles/source/.aliases
-[ -f ~/.dotfiles/source/.bash_prompt ] && source ~/.dotfiles/source/.bash_prompt
+# [ -f ~/.dotfiles/source/.bash_prompt ] && source ~/.dotfiles/source/.bash_prompt
 [ -f ~/.dotfiles/source/.commacd.bash ] && source ~/.dotfiles/source/.commacd.bash
 
 # if has homebrew
@@ -39,7 +36,7 @@ if [[ `command -v brew` == *"brew" ]]; then
   [[ -f `brew --prefix`/etc/bash_completion ]] && source `brew --prefix`/etc/bash_completion
 fi
 
-[[ `command mono -v 2> /dev/null` ]] && export MONO_GAC_PREFIX="/usr/local"
+# [[ `command mono -v 2> /dev/null` ]] && export MONO_GAC_PREFIX="/usr/local"
 # [[ `command -v phantomjs 2> /dev/null` ]] && export PHANTOMJS_BIN=`command -v phantomjs`
 
 export PATH CDPATH INPUTRC PAGER EDITOR VISUAL
