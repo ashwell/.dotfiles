@@ -16,6 +16,7 @@ PATH="/usr/local/bin:/usr/local/sbin:~/.dotfiles/bin:$PATH:./node_modules/.bin"
 # CUSTOM CDPATH
 [ -d ~/repos ] && CDPATH="$CDPATH:~/repos"
 [ -d ~/repos/jsla ] && CDPATH="$CDPATH:~/repos/jsla"
+[ -d ~/repos/stationhead ] && CDPATH="$CDPATH:~/repos/stationhead"
 [ -d ~/workspace ] && CDPATH="$CDPATH:~/workspace"
 [ -d ~/workspace/hound ] && CDPATH="$CDPATH:~/workspace/hound"
 

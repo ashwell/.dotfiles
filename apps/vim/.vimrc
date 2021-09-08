@@ -87,6 +87,11 @@ au BufNewFile,BufRead *.less set syn=css
 " Set Default Encoding
 set encoding=utf-8
 
+" Spelling Setup
+" config from: https://thejakeharding.com/using-spell-check-in-vim
+set spell spelllang=en
+set spellfile=$HOME/.dotfiles/apps/vim/spell/en.utf-8.add
+
 " automatically indent lines (default)
 " set noautoindent
 set autoindent
@@ -94,7 +99,7 @@ set autoindent
 " show line numbers in left margin
 set nu
 
-" select case-insenitiv search (not default)
+" select case-insensitive search (not default)
 set ignorecase
 
 " show cursor line and column in the status line
@@ -121,7 +126,7 @@ set esckeys
 "          Switch it off if you prefer real vi compatibility
 " set nocompatible
 
-" expand tabs to spaces.  makes sense if we want people with other editors
+" expand tabs to spaces. Makes sense if we want people with other editors
 " to see the file looking the same.
 set expandtab
 
