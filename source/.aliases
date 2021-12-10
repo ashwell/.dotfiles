@@ -9,14 +9,19 @@
 [[ "$OSTYPE" == "darwin"* ]] && alias ls='command ls -G'
 # Needs a double check
 [[ "$OSTYPE" == "arch"* ]] && alias ls='command ls --color=auto'
+# Exit
+alias c="clear -x"
+#alias cls="c && !!"
+alias lg="logout"
+# Dirs
 alias ll="ls -lh"
 alias llr="ls -lhR"
 alias la="ls -a"
 alias lla="ls -lha"
 alias lar="ls -lhaR"
-alias cl="clear;pwd;ll"
-alias cla="clear;pwd;la"
-alias clla="clear;pwd;lla"
+alias cl="c;pwd;ll"
+alias cla="c;pwd;la"
+alias clla="c;pwd;lla"
 
 # Navigation
 alias ..='cd ..'
@@ -35,14 +40,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   [[ `command -v wstorm` == *"wstorm" ]] && alias ostorm="open -a WebStorm"
 fi
 
-# Exit
-alias c="clear"
-#alias cls="c && !!"
-alias lg="logout"
-
 # Git Short Commands (see .gitconfig for git aliases)
 alias gfshow="git fetch origin && echo 'fetched origin' && git remote show origin"
-alias cstat="clear && pwd && git status"
+alias cstat="c && pwd && git status"
 alias git-behind="git branch -vv --color=always | grep behind"
 alias git-ahead="git branch -vv --color=always | grep ahead"
 alias git-gone="git branch -vv --color=always | grep gone"
@@ -52,5 +52,11 @@ alias git-to-sync="git branch -vv --color=always | grep 'behind\|ahead\|gone'"
 if [[ `command -v brew` == *"brew" ]]; then
   alias brewu="brew update && brew doctor && echo 'outdated:' && brew outdated"
   alias brewcasku="brew cask update && brew cask doctor"
+fi
+
+# APT
+if [[ `command -v apt` == *"apt" ]]; then
+  alias apt-check="sudo apt update && echo && echo 'Listing Upgradeable' && echo && apt list --upgradeable"
+  alias apt-upgradeable="apt list --upgradeable"
 fi
 
