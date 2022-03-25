@@ -27,3 +27,5 @@ do
   # todo guard that file doesn't exist in ~ before linking
   # ln -s $f ~/
 done
+
+#TODO "apps folder" needs a rework probably
