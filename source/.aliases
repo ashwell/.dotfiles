@@ -10,6 +10,7 @@
 # Needs a double check
 [[ "$OSTYPE" == "arch"* ]] && alias ls='command ls --color=auto'
 # Exit
+alias clear="clear -x"
 alias c="clear -x"
 #alias cls="c && !!"
 alias lg="logout"

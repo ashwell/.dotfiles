@@ -37,7 +37,7 @@ fetchAndCheck ()
     echo "Not in a git repo...exiting"
     return;
   fi
-  clear; echo "fetching origin" && git fetch origin && echo "pruning origin" && git remote prune origin && echo "branches in need of updates(?): " && (git branch -vv --color=always | grep 'behind\|ahead\|gone')
+  clear -x; echo "fetching origin" && git fetch origin && echo "pruning origin" && git remote prune origin && echo "branches in need of updates(?): " && (git branch -vv --color=always | grep 'behind\|ahead\|gone')
 }
 
 # Program Start

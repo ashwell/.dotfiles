@@ -24,7 +24,6 @@ PATH="/usr/local/bin:/usr/local/sbin:~/.dotfiles/bin:$PATH:./node_modules/.bin"
 # INPUTRC
 [ -f ~/.dotfiles/link/.inputrc ] && INPUTRC="~/.dotfiles/link/.inputrc"
 
-
 # if bash 4 enable double star
 [[ "$BASH_VERSION" == "4"* ]] && shopt -s globstar
 
@@ -42,4 +41,3 @@ fi
 # [[ `command -v phantomjs 2> /dev/null` ]] && export PHANTOMJS_BIN=`command -v phantomjs`
 
 export PATH CDPATH INPUTRC PAGER EDITOR VISUAL
-
