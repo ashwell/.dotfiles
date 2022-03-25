@@ -63,7 +63,7 @@ set_batt_info(){
 # Source Git Prompt Function
 [[ -f ~/.dotfiles/source/.git-prompt.sh ]] && source ~/.dotfiles/source/.git-prompt.sh
 
-# Setup Prompt (not used?)
+# Setup Prompt (pretty sure is not used anymore)
 set_git_info(){
   PRMT_GIT=""
   if [ `command -v git` ]; then
@@ -93,22 +93,29 @@ GIT_PS1_SHOWUPSTREAM="verbose"
 # Prompt Command to update PS1 Vars
 make_prompt(){
   set_time_date
-  set_batt_info
+  #set_batt_info
   #set_git_info
 
   # iTerm Tab Title
   if [ $ITERM_SESSION_ID ]; then
     echo -ne "\033];${PWD##*/}\007"
   fi
-
 }
 
 
 PROMPT_COMMAND=make_prompt
 
 colorOff='\[\e[0m\]'
-PS1='\n${PRMT_TIME} -- $(echo -e "\[$battColorOn\]")${PRMT_BATT}'"\[${colorOff}\]"'\n[\u@\h:\W]$(__git_ps1 "[ %s ]")\n[$?]\$ '
+# New for WSL 2021
+PS1=$'\n${PRMT_TIME} - \[\033[01;32m\]\u@\h\[\033[00m\]\n$(__git_ps1 "[%s]\u2794 ")\[\033[01;34m\]\w\[\033[00m\]\n[$?]\$ '
+# Working on MacOS as of 2/2021
+#PS1='\n${PRMT_TIME} -- $(echo -e "\[$battColorOn\]")${PRMT_BATT}'"\[${colorOff}\]"'\n[\u@\h:\W]$(__git_ps1 "[ %s ]")\n[$?]\$ '
+# Uses git_info function
 #PS1='\n${PRMT_TIME} -- $(echo -e "\[$battColorOn\]")${PRMT_BATT}'"\[${colorOff}\]"'\n[\u@\h:\W]$PRMT_GIT\$ '
+# Copied from builtin for ref
+# PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
+unset colorOff
 
 export PS1
 

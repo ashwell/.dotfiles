@@ -2,27 +2,27 @@
 set nocompatible
 filetype off
 " add vundle to runtime path
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+" set rtp+=~/.vim/bundle/Vundle.vim
+" call vundle#begin()
+" Plugin 'gmarik/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 "
 " plugin on GitHub repo
 "Plugin 'tpope/vim-fugitive'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'mileszs/ack.vim'
-Plugin 'Raimondi/delimitMate'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'editorconfig/editorconfig-vim'
+" Plugin 'altercation/vim-colors-solarized'
+" Plugin 'mileszs/ack.vim'
+" Plugin 'Raimondi/delimitMate'
+" Plugin 'scrooloose/nerdcommenter'
+" Plugin 'terryma/vim-multiple-cursors'
+" Plugin 'editorconfig/editorconfig-vim'
 "Plugin 'marijnh/tern_for_vim'
 "Plugin 'Valloric/YouCompleteMe'
 "
 " plugin from http://vim-scripts.org/vim/scripts.html
 "Plugin 'L9'
-Plugin 'closetag.vim'
-Plugin 'ShowTrailingWhitespace'
+" Plugin 'closetag.vim'
+" Plugin 'ShowTrailingWhitespace'
 "
 " Git plugin not hosted on GitHub
 "Plugin 'git://git.wincent.com/command-t.git'
@@ -37,7 +37,7 @@ Plugin 'ShowTrailingWhitespace'
 "Plugin 'user/L9', {'name': 'newL9'}
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+" call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -63,8 +63,8 @@ filetype plugin indent on    " required
 syntax enable
 " Solarized theme, dark or light
 set background=dark
-let g:solarized_visibility="high"
-colorscheme solarized
+" let g:solarized_visibility="high"
+" colorscheme solarized
 " cyan comments suck.  Use light grey instead.
 " dark comments
 "hi Comment ctermfg=LightGrey guifg=LightGrey
@@ -87,6 +87,11 @@ au BufNewFile,BufRead *.less set syn=css
 " Set Default Encoding
 set encoding=utf-8
 
+" Spelling Setup
+" config from: https://thejakeharding.com/using-spell-check-in-vim
+set spell spelllang=en
+set spellfile=$HOME/.dotfiles/apps/vim/spell/en.utf-8.add
+
 " automatically indent lines (default)
 " set noautoindent
 set autoindent
@@ -94,7 +99,7 @@ set autoindent
 " show line numbers in left margin
 set nu
 
-" select case-insenitiv search (not default)
+" select case-insensitive search (not default)
 set ignorecase
 
 " show cursor line and column in the status line
@@ -121,7 +126,7 @@ set esckeys
 "          Switch it off if you prefer real vi compatibility
 " set nocompatible
 
-" expand tabs to spaces.  makes sense if we want people with other editors
+" expand tabs to spaces. Makes sense if we want people with other editors
 " to see the file looking the same.
 set expandtab
 
