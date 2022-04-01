@@ -51,7 +51,7 @@ alias git-to-sync="git branch -vv --color=always | grep 'behind\|ahead\|gone'"
 
 # Homebrew
 if [[ `command -v brew` == *"brew" ]]; then
-  alias brewu="brew update && brew doctor && echo 'outdated:' && brew outdated"
+  alias brewu="brew update && echo 'outdated:' && brew outdated && brew doctor"
   alias brewcasku="brew cask update && brew cask doctor"
 fi
 

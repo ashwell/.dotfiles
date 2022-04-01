@@ -16,3 +16,4 @@
 	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	logline = log -U0 -S
+	fpush = push --force-with-lease
