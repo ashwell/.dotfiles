@@ -17,5 +17,6 @@
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	logline = log -U0 -S
 	fpush = push --force-with-lease
+	uncommit = reset --soft HEAD^
 [url "git@github.com:"]
 	insteadOf = https://github.com/

@@ -30,6 +30,34 @@ switchAndPull ()
   git checkout $1 && git pull && echo "$1 was pulled, checking out $ogBranch" && git checkout $ogBranch
 }
 
+# Checks out a list of branches, git pulling each one
+# Checks back into the original branch after the opertaion
+pullList ()
+{
+  git branch > /dev/null 2>&1
+  if [ $? -ne 0 ]; then
+    echo "Not in a git repo...exiting"
+    return;
+  elif [ $# -eq 0 ]; then
+    echo "Don't know what to pull...exiting"
+    return;
+  fi
+
+  # Save Branch to switch back to
+  local ogBranch=`git branch | awk '/^\*/ {print $2}'`
+  echo "Currently on $ogBranch"
+
+  for b in "$@"
+  do
+    echo "Checking out $b"
+    git checkout $b
+    git pull
+    echo "$b up to date"
+  done
+  echo "All requested branches up to date, switching back to $ogBranch"
+  git checkout $ogBranch
+}
+
 fetchAndCheck ()
 {
   git branch > /dev/null 2>&1
@@ -37,7 +65,7 @@ fetchAndCheck ()
     echo "Not in a git repo...exiting"
     return;
   fi
-  clear -x; echo "fetching origin" && git fetch origin && echo "pruning origin" && git remote prune origin && echo "branches in need of updates(?): " && (git branch -vv --color=always | grep 'behind\|ahead\|gone')
+  echo "fetching origin" && git fetch origin && echo "pruning origin" && git remote prune origin && echo "branches in need of updates(?): " && (git branch -vv --color=always | grep 'behind\|ahead\|gone')
 }
 
 # Program Start
@@ -51,6 +79,13 @@ fi
 if [ "$1" == "pull" ]; then
 #  echo "Performing pull and switch for $2"
   switchAndPull $2
+fi
+
+# $1: pull-all || pull-list
+# $@: ...branches
+if [ "$1" == "pull-all" ] || [ "$1" == "pull-list" ]; then
+  shift
+  pullList $@
 fi
 
 # $1: fetch

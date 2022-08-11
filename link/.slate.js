@@ -5,8 +5,13 @@ slate.configAll({
 
 
 // Monitors
-var laptop = "1792x1120";
-var dellUW = "3440x1440";
+var resolutions = {
+  laptop: "1792x1120",
+  dellUW: "3440x1440"
+};
+
+// var getLaptop = () => slate.screenForRef(resolutions.laptop);
+// var getDellUW = () => slate.screenForRef(resolutions.dellUW);
 
 
 // Operations
@@ -29,11 +34,11 @@ var rightHalf = slate.operation("corner", {
   height:"screenSizeY"
 });
 
-var halveHeight = slate.operation("move", {
+var shrinkHeight = slate.operation("move", {
   x: "windowTopLeftX",
   y: "windowTopLeftY",
   width: "windowSizeX",
-  height: "windowSizeY/2"
+  height: "windowSizeY-(windowSizeY*0.1)"
 });
 
 // quarters
@@ -67,4 +72,24 @@ slate.bind('right:ctrl,alt,cmd', rightHalf, false);
 slate.bind('right:shift,ctrl,alt,cmd', quarters.bottomRight, false);
 slate.bind('left:ctrl,alt,cmd', leftHalf, false);
 slate.bind('left:shift,ctrl,alt,cmd', quarters.bottomLeft, false);
-slate.bind('down:ctrl,alt,cmd', halveHeight, false);
+slate.bind('down:ctrl,alt,cmd', shrinkHeight, false);
+
+
+// Not working not sure why
+// on Zoom open reposition
+/*
+slate.on("windowOpened", function(event, win) {
+  // slate.log('saw win open ' + win.app().name());
+  if( win.app().name() === 'zoom.us' ) {
+    slate.log('saw zoom open');
+    win.move({
+      screen: resolutions.laptop
+      x: "screenOriginX+910",
+      y: "screenOriginY+435",
+      width: "windowSizeX",
+      height: "windowSizeY"
+    });
+  }
+});
+*/
+
