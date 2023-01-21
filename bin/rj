@@ -81,6 +81,7 @@ if [ "$1" == "pull" ]; then
   switchAndPull $2
 fi
 
+# TODO unify pull and pull-all
 # $1: pull-all || pull-list
 # $@: ...branches
 if [ "$1" == "pull-all" ] || [ "$1" == "pull-list" ]; then
@@ -93,6 +94,7 @@ if [ "$1" == "fetch" ]; then
   fetchAndCheck
 fi
 
+# TODO make this support a list
 # $1: sync
 # $2: branch-name
 if [ "$1" == "sync" ]; then
