@@ -58,6 +58,31 @@ pullList ()
   git checkout $ogBranch
 }
 
+syncList ()
+{
+  git branch > /dev/null 2>&1
+  if [ $? -ne 0 ]; then
+    echo "Not in a git repo...exiting"
+    return;
+  elif [ $# -eq 0 ]; then
+    echo "Don't know what to sync...exiting"
+    return;
+  fi
+
+  local branchToReturnTo=`git branch | awk '/^\*/ {print $2}'`
+  echo "Currently on $branchToReturnTo"
+
+  for b in "$@"
+  do
+    echo "Checking out $b"
+    git checkout $b
+    git rebase master
+    echo "$b rebased against master"
+  done
+  echo "All requested branches up to date, switching back to $branchToReturnTo"
+  git checkout $branchToReturnTo
+}
+
 fetchAndCheck ()
 {
   git branch > /dev/null 2>&1
@@ -77,14 +102,7 @@ fi
 # $1: pull
 # $2: branch-name
 if [ "$1" == "pull" ]; then
-#  echo "Performing pull and switch for $2"
-  switchAndPull $2
-fi
-
-# TODO unify pull and pull-all
-# $1: pull-all || pull-list
-# $@: ...branches
-if [ "$1" == "pull-all" ] || [ "$1" == "pull-list" ]; then
+#  echo "Performing pull and switch for $@"
   shift
   pullList $@
 fi
@@ -102,7 +120,9 @@ if [ "$1" == "sync" ]; then
     echo "No branch name provided..."
     exit
   fi
-  switchAndPull $2
-  echo "Rebasing current branch against $2"
-  git rebase $2
+  shift
+  syncList $@
+  # switchAndPull $2
+  # echo "Rebasing current branch against $2"
+    # git rebase $2
 fi
