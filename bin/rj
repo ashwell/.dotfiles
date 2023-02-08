@@ -23,8 +23,7 @@ switchAndPull ()
 
   # Save Branch to switch back to
   local ogBranch=`git branch | awk '/^\*/ {print $2}'`
-  echo "Currently on $ogBranch"
-  echo "Checking out $1"
+  echo -e "\nCurrently on $ogBranch\nChecking out $1\n"
 
   # Do magic
   git checkout $1 && git pull && echo "$1 was pulled, checking out $ogBranch" && git checkout $ogBranch
@@ -45,14 +44,14 @@ pullList ()
 
   # Save Branch to switch back to
   local ogBranch=`git branch | awk '/^\*/ {print $2}'`
-  echo "Currently on $ogBranch"
+  echo -e "Currently on $ogBranch\n"
 
   for b in "$@"
   do
     echo "Checking out $b"
     git checkout $b
     git pull
-    echo "$b up to date"
+    echo -e "$b up to date\n"
   done
   echo "All requested branches up to date, switching back to $ogBranch"
   git checkout $ogBranch
@@ -70,16 +69,20 @@ syncList ()
   fi
 
   local branchToReturnTo=`git branch | awk '/^\*/ {print $2}'`
-  echo "Currently on $branchToReturnTo"
+  echo -e "Currently on $branchToReturnTo\n"
 
   for b in "$@"
   do
+    if [ $b == "." ]; then
+      echo -e "\nRebasing current branch $branchToReturnTo"
+      b="$branchToReturnTo"
+    fi
     echo "Checking out $b"
     git checkout $b
     git rebase master
-    echo "$b rebased against master"
+    echo -e "$b rebased against master\n"
   done
-  echo "All requested branches up to date, switching back to $branchToReturnTo"
+  echo -e "\nAll requested branches up to date, switching back to $branchToReturnTo\n"
   git checkout $branchToReturnTo
 }
 
@@ -112,17 +115,23 @@ if [ "$1" == "fetch" ]; then
   fetchAndCheck
 fi
 
-# TODO make this support a list
 # $1: sync
 # $2: branch-name
-if [ "$1" == "sync" ]; then
+if [ "$1" == "sync" ] || [ "$1" == "fsync" ]; then
   if [ "$2" == "" ]; then
     echo "No branch name provided..."
     exit
   fi
+
+  if [ "$1" == "fsync" ]; then
+    echo -e "\nPulling master before syncing"
+    git checkout master && git pull && git checkout - 
+  fi
+
   shift
   syncList $@
   # switchAndPull $2
   # echo "Rebasing current branch against $2"
     # git rebase $2
 fi
+
