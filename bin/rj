@@ -1,12 +1,18 @@
 #!/bin/bash
 # vi:syntax=sh
 # Some simple things I do often
-#
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+echo -e "\nHello Ryan\n"
 
 # Checks out branch $1
 # "git pull"s
 # Check back out original branch
 # Execute via `rj pull branch-name`
+
 switchAndPull ()
 {
   git branch > /dev/null 2>&1
@@ -86,6 +92,36 @@ syncList ()
   git checkout $branchToReturnTo
 }
 
+pushList ()
+{
+  git branch > /dev/null 2>&1
+  if [ $? -ne 0 ]; then
+    echo "Not in a git repo...exiting"
+    return;
+  elif [ $# -eq 0 ]; then
+    echo "Don't know what to sync...exiting"
+    return;
+  fi
+
+  # Save Branch to switch back to
+  local branchToReturnTo=`git branch | awk '/^\*/ {print $2}'`
+  echo -e "Currently on $branchToReturnTo\n"
+
+  for b in "$@"
+  do
+    if [ $b == "master" ] || [ $b == "main" ]; then
+      echo -e "\nAww hell no"
+      return;
+    fi
+    echo "Checking out $b"
+    git checkout $b
+    git fpush
+    echo -e "$b has been fpushed\n"
+  done
+  echo "Pushed it real good, switching back to $branchToReturnTo"
+  git checkout $branchToReturnTo
+}
+
 fetchAndCheck ()
 {
   git branch > /dev/null 2>&1
@@ -93,7 +129,7 @@ fetchAndCheck ()
     echo "Not in a git repo...exiting"
     return;
   fi
-  echo "fetching origin" && git fetch origin && echo "pruning origin" && git remote prune origin && echo "branches in need of updates(?): " && (git branch -vv --color=always | grep 'behind\|ahead\|gone')
+  echo -e "fetching origin\n" && git fetch origin && echo "pruning origin" && git remote prune origin && echo "branches in need of updates(?): " && (git branch -vv --color=always | grep 'behind\|ahead\|gone')
 }
 
 # Program Start
@@ -135,3 +171,13 @@ if [ "$1" == "sync" ] || [ "$1" == "fsync" ]; then
     # git rebase $2
 fi
 
+if [ "$1" == "fpush" ]; then
+  if [ "$2" == "" ]; then
+    echo "No branch name provided..."
+    exit
+  fi
+
+  echo -e "\nForce Push Away!"
+  shift
+  pushList $@
+fi
