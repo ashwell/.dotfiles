@@ -119,7 +119,9 @@ set showmode
 " set magic
 
 " Required to be able to use keypad keys and map missed escape sequences
-set esckeys
+if !has('nvim')
+  set esckeys
+endif
 
 " get easier to use and more user friendly vim defaults
 " CAUTION: This option breaks some vi compatibility.
