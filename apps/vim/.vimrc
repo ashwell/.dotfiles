@@ -91,10 +91,15 @@ set encoding=utf-8
 " config from: https://thejakeharding.com/using-spell-check-in-vim
 set spell spelllang=en
 set spellfile=$HOME/.dotfiles/apps/vim/spell/en.utf-8.add
+" If in VSCode Extension
+if exists('g:vscode')
+  set spell nospell
+endif
 
 " automatically indent lines (default)
 " set noautoindent
 set autoindent
+set smartindent
 
 " show line numbers in left margin
 set nu

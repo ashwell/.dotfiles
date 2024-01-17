@@ -2,6 +2,7 @@
 # vi:syntax=sh
 # Some simple things I do often
 
+# this makes some of the branch checking useless as the fatal return from git stops the script
 set -o errexit
 set -o nounset
 set -o pipefail
@@ -18,13 +19,13 @@ switchAndPull ()
   git branch > /dev/null 2>&1
   if [ $? -ne 0 ]; then
     echo "Not in a git repo...exiting"
-    return;
+    exit 126;
   elif [ $# -eq 0 ]; then
     echo "Don't know what to pull...exiting"
-    return;
+    exit 126;
   elif [ -z $(git branch | grep $1) ]; then
     echo "Branch $1 does not exist...exiting"
-    return;
+    exit 126;
   fi
 
   # Save Branch to switch back to
@@ -42,10 +43,10 @@ pullList ()
   git branch > /dev/null 2>&1
   if [ $? -ne 0 ]; then
     echo "Not in a git repo...exiting"
-    return;
+    exit 126;
   elif [ $# -eq 0 ]; then
     echo "Don't know what to pull...exiting"
-    return;
+    exit 126;
   fi
 
   # Save Branch to switch back to
@@ -68,10 +69,10 @@ syncList ()
   git branch > /dev/null 2>&1
   if [ $? -ne 0 ]; then
     echo "Not in a git repo...exiting"
-    return;
+    exit 126;
   elif [ $# -eq 0 ]; then
     echo "Don't know what to sync...exiting"
-    return;
+    exit 126;
   fi
 
   local branchToReturnTo=`git branch | awk '/^\*/ {print $2}'`
@@ -97,10 +98,10 @@ pushList ()
   git branch > /dev/null 2>&1
   if [ $? -ne 0 ]; then
     echo "Not in a git repo...exiting"
-    return;
+    exit 126;
   elif [ $# -eq 0 ]; then
     echo "Don't know what to sync...exiting"
-    return;
+    exit 126;
   fi
 
   # Save Branch to switch back to
@@ -111,7 +112,7 @@ pushList ()
   do
     if [ $b == "master" ] || [ $b == "main" ]; then
       echo -e "\nAww hell no"
-      return;
+      exit 126;
     fi
     echo "Checking out $b"
     git checkout $b
@@ -127,7 +128,7 @@ fetchAndCheck ()
   git branch > /dev/null 2>&1
   if [ $? -ne 0 ]; then
     echo "Not in a git repo...exiting"
-    return;
+    exit 126;
   fi
   echo -e "fetching origin\n" && git fetch origin && echo "pruning origin" && git remote prune origin && echo "branches in need of updates(?): " && (git branch -vv --color=always | grep 'behind\|ahead\|gone')
 }
@@ -136,6 +137,7 @@ fetchAndCheck ()
 # exit on no arguments
 if [ $# -eq 0 ]; then
   echo "No arguments supplied"
+  exit 1;
 fi
 
 # $1: pull
@@ -156,7 +158,7 @@ fi
 if [ "$1" == "sync" ] || [ "$1" == "fsync" ]; then
   if [ "$2" == "" ]; then
     echo "No branch name provided..."
-    exit
+    exit 126;
   fi
 
   if [ "$1" == "fsync" ]; then
@@ -174,7 +176,7 @@ fi
 if [ "$1" == "fpush" ]; then
   if [ "$2" == "" ]; then
     echo "No branch name provided..."
-    exit
+    exit 126;
   fi
 
   echo -e "\nForce Push Away!"
