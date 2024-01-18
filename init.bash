@@ -25,7 +25,7 @@ do
   echo "Linking: $f"
   # todo guard that file being linked to exists
   # todo guard that file doesn't exist in ~ before linking
-  # ln -s $f ~/
+  # ln -s "$HOME/.dotfiles/link/$f" ~/
 done
 
 #TODO "apps folder" needs a rework probably
