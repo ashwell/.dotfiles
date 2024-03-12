@@ -91,10 +91,15 @@ set encoding=utf-8
 " config from: https://thejakeharding.com/using-spell-check-in-vim
 set spell spelllang=en
 set spellfile=$HOME/.dotfiles/apps/vim/spell/en.utf-8.add
+" If in VSCode Extension
+if exists('g:vscode')
+  set spell nospell
+endif
 
 " automatically indent lines (default)
 " set noautoindent
 set autoindent
+set smartindent
 
 " show line numbers in left margin
 set nu
@@ -119,7 +124,9 @@ set showmode
 " set magic
 
 " Required to be able to use keypad keys and map missed escape sequences
-set esckeys
+if !has('nvim')
+  set esckeys
+endif
 
 " get easier to use and more user friendly vim defaults
 " CAUTION: This option breaks some vi compatibility.

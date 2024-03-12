@@ -1,33 +1,126 @@
 #!/bin/bash
 # vi:syntax=sh
 # Some simple things I do often
-#
+
+# this makes some of the branch checking useless as the fatal return from git stops the script
+set -o errexit
+set -o nounset
+set -o pipefail
+
+echo -e "\nHello Ryan\n"
 
 # Checks out branch $1
 # "git pull"s
 # Check back out original branch
 # Execute via `rj pull branch-name`
+
 switchAndPull ()
 {
   git branch > /dev/null 2>&1
   if [ $? -ne 0 ]; then
     echo "Not in a git repo...exiting"
-    return;
+    exit 126;
   elif [ $# -eq 0 ]; then
     echo "Don't know what to pull...exiting"
-    return;
+    exit 126;
   elif [ -z $(git branch | grep $1) ]; then
     echo "Branch $1 does not exist...exiting"
-    return;
+    exit 126;
   fi
 
   # Save Branch to switch back to
   local ogBranch=`git branch | awk '/^\*/ {print $2}'`
-  echo "Currently on $ogBranch"
-  echo "Checking out $1"
+  echo -e "\nCurrently on $ogBranch\nChecking out $1\n"
 
   # Do magic
   git checkout $1 && git pull && echo "$1 was pulled, checking out $ogBranch" && git checkout $ogBranch
+}
+
+# Checks out a list of branches, git pulling each one
+# Checks back into the original branch after the opertaion
+pullList ()
+{
+  git branch > /dev/null 2>&1
+  if [ $? -ne 0 ]; then
+    echo "Not in a git repo...exiting"
+    exit 126;
+  elif [ $# -eq 0 ]; then
+    echo "Don't know what to pull...exiting"
+    exit 126;
+  fi
+
+  # Save Branch to switch back to
+  local ogBranch=`git branch | awk '/^\*/ {print $2}'`
+  echo -e "Currently on $ogBranch\n"
+
+  for b in "$@"
+  do
+    echo "Checking out $b"
+    git checkout $b
+    git pull
+    echo -e "$b up to date\n"
+  done
+  echo "All requested branches up to date, switching back to $ogBranch"
+  git checkout $ogBranch
+}
+
+syncList ()
+{
+  git branch > /dev/null 2>&1
+  if [ $? -ne 0 ]; then
+    echo "Not in a git repo...exiting"
+    exit 126;
+  elif [ $# -eq 0 ]; then
+    echo "Don't know what to sync...exiting"
+    exit 126;
+  fi
+
+  local branchToReturnTo=`git branch | awk '/^\*/ {print $2}'`
+  echo -e "Currently on $branchToReturnTo\n"
+
+  for b in "$@"
+  do
+    if [ $b == "." ]; then
+      echo -e "\nRebasing current branch $branchToReturnTo"
+      b="$branchToReturnTo"
+    fi
+    echo "Checking out $b"
+    git checkout $b
+    git rebase master
+    echo -e "$b rebased against master\n"
+  done
+  echo -e "\nAll requested branches up to date, switching back to $branchToReturnTo\n"
+  git checkout $branchToReturnTo
+}
+
+pushList ()
+{
+  git branch > /dev/null 2>&1
+  if [ $? -ne 0 ]; then
+    echo "Not in a git repo...exiting"
+    exit 126;
+  elif [ $# -eq 0 ]; then
+    echo "Don't know what to sync...exiting"
+    exit 126;
+  fi
+
+  # Save Branch to switch back to
+  local branchToReturnTo=`git branch | awk '/^\*/ {print $2}'`
+  echo -e "Currently on $branchToReturnTo\n"
+
+  for b in "$@"
+  do
+    if [ $b == "master" ] || [ $b == "main" ]; then
+      echo -e "\nAww hell no"
+      exit 126;
+    fi
+    echo "Checking out $b"
+    git checkout $b
+    git fpush
+    echo -e "$b has been fpushed\n"
+  done
+  echo "Pushed it real good, switching back to $branchToReturnTo"
+  git checkout $branchToReturnTo
 }
 
 fetchAndCheck ()
@@ -35,22 +128,24 @@ fetchAndCheck ()
   git branch > /dev/null 2>&1
   if [ $? -ne 0 ]; then
     echo "Not in a git repo...exiting"
-    return;
+    exit 126;
   fi
-  clear -x; echo "fetching origin" && git fetch origin && echo "pruning origin" && git remote prune origin && echo "branches in need of updates(?): " && (git branch -vv --color=always | grep 'behind\|ahead\|gone')
+  echo -e "fetching origin\n" && git fetch origin && echo "pruning origin" && git remote prune origin && echo "branches in need of updates(?): " && (git branch -vv --color=always | grep 'behind\|ahead\|gone')
 }
 
 # Program Start
 # exit on no arguments
 if [ $# -eq 0 ]; then
   echo "No arguments supplied"
+  exit 1;
 fi
 
 # $1: pull
 # $2: branch-name
 if [ "$1" == "pull" ]; then
-#  echo "Performing pull and switch for $2"
-  switchAndPull $2
+#  echo "Performing pull and switch for $@"
+  shift
+  pullList $@
 fi
 
 # $1: fetch
@@ -60,12 +155,31 @@ fi
 
 # $1: sync
 # $2: branch-name
-if [ "$1" == "sync" ]; then
+if [ "$1" == "sync" ] || [ "$1" == "fsync" ]; then
   if [ "$2" == "" ]; then
     echo "No branch name provided..."
-    exit
+    exit 126;
   fi
-  switchAndPull $2
-  echo "Rebasing current branch against $2"
-  git rebase $2
+
+  if [ "$1" == "fsync" ]; then
+    echo -e "\nPulling master before syncing"
+    git checkout master && git pull && git checkout - 
+  fi
+
+  shift
+  syncList $@
+  # switchAndPull $2
+  # echo "Rebasing current branch against $2"
+    # git rebase $2
+fi
+
+if [ "$1" == "fpush" ]; then
+  if [ "$2" == "" ]; then
+    echo "No branch name provided..."
+    exit 126;
+  fi
+
+  echo -e "\nForce Push Away!"
+  shift
+  pushList $@
 fi

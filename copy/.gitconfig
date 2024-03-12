@@ -7,12 +7,21 @@
 	ui = true
 	branch = auto
 	status = auto
+[init]
+	defaultBranch = main
 [push]
 	default = simple
 [alias]
+	cbranch = symbolic-ref --short HEAD # outputs current branch
 	fo = fetch origin
 	rso = remote show origin
 	fdry = fetch origin --dry-run
 	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lgb = lg --branches
 	logline = log -U0 -S
+	fpush = push --force-with-lease
+	uncommit = reset --soft HEAD^
+	atag = "!git tag archive/$(git cbranch) $(git cbranch)"
+[url "git@github.com:"]
+	insteadOf = https://github.com/
