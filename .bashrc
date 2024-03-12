@@ -11,7 +11,7 @@
 [[ `command -v vim` ]] && EDITOR=`command -v vim` ; VISUAL=`command -v vim`
 
 # CUSTOM PATH
-PATH="/usr/local/bin:/usr/local/sbin:~/.dotfiles/bin:$PATH:./node_modules/.bin"
+PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/local/sbin:~/.dotfiles/bin:$PATH:./node_modules/.bin"
 
 # CUSTOM CDPATH
 [ -d ~/repos ] && CDPATH="$CDPATH:~/repos"
