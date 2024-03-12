@@ -13,7 +13,7 @@ do
   echo "Copy: $f"
   # todo guard that file being copied exists
   # todo guard that file does NOT exist in ~ before copy
-  # cp $f ~/$f
+  # cp "$HOME/.dotfiles/copy/$f" ~/$f
 done
 
 # Symlink Files from Link Folder
