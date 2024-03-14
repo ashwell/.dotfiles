@@ -4,7 +4,8 @@
 xcode-select --install
 
 # install homebrew
-ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+# ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 brew update
 brew doctor
@@ -15,23 +16,21 @@ brew doctor
 brew install bash
 # setup homebrew bash
 # Add the new shell to the list of legit shells
-sudo bash -c "echo /usr/local/bin/bash >> /private/etc/shells"
+sudo bash -c "echo /opt/homebrew/bin/bash >> /private/etc/shells"
 # Change the shell for the user
-chsh -s /usr/local/bin/bash
+chsh -s /opt/homebrew/bin/bash
 # Check for Bash 4 and /usr/local/bin/bash...
+echo "Checking Bash Version"
 echo $BASH && echo $BASH_VERSION
 
 
-brew install bash-completion
+brew install bash-completion git node
 
-brew install git
-
-brew install node
-
-
+# Do dotfiles first
 # pull down .dotfiles
-cd ~
-git clone http://github.com/Ashwell/.dotfiles.git
+#cd ~
+#git clone http://github.com/ashwell/.dotfiles.git
 
-# install .dotfiles (link step)
-# TODO
+# Setup Keybindings
+sudo mkdir ~/Library/KeyBindings
+sudo cp ~/.dotfiles/mac/DefaultKeyBinding.dict ~/Library/KeyBindings/
