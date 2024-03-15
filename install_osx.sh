@@ -34,3 +34,6 @@ brew install bash-completion git node
 # Setup Keybindings
 sudo mkdir ~/Library/KeyBindings
 sudo cp ~/.dotfiles/mac/DefaultKeyBinding.dict ~/Library/KeyBindings/
+
+# Enable Key Repeat
+defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
