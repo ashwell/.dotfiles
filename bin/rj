@@ -14,6 +14,27 @@ echo -e "\nHello Ryan\n"
 # Check back out original branch
 # Execute via `rj pull branch-name`
 
+checkInGitRepo ()
+{
+  git branch > /dev/null 2>&1
+  if [ $? -ne 0 ]; then
+    echo "Not in a git repo...exiting"
+    exit 126;
+  else
+    echo 'In a git repo...proceeding'
+  fi
+}
+
+getMainGitBranch ()
+{
+  local foundBranch=`git branch | grep -E 'master|main'`
+  if [ -z $foundBranch ]; then
+    echo "No main or master branch found...exiting"
+    exit 126;
+  fi
+  echo $foundBranch
+}
+
 switchAndPull ()
 {
   git branch > /dev/null 2>&1
@@ -77,6 +98,7 @@ syncList ()
 
   local branchToReturnTo=`git branch | awk '/^\*/ {print $2}'`
   echo -e "Currently on $branchToReturnTo\n"
+  local mainBranch=`getMainGitBranch`
 
   for b in "$@"
   do
@@ -86,8 +108,8 @@ syncList ()
     fi
     echo "Checking out $b"
     git checkout $b
-    git rebase master
-    echo -e "$b rebased against master\n"
+    git rebase $mainBranch
+    echo -e "$b rebased against $mainBranch\n"
   done
   echo -e "\nAll requested branches up to date, switching back to $branchToReturnTo\n"
   git checkout $branchToReturnTo
@@ -134,6 +156,8 @@ fetchAndCheck ()
 }
 
 # Program Start
+checkInGitRepo && echo "Main branch: $(getMainGitBranch)";
+
 # exit on no arguments
 if [ $# -eq 0 ]; then
   echo "No arguments supplied"
@@ -162,8 +186,10 @@ if [ "$1" == "sync" ] || [ "$1" == "fsync" ]; then
   fi
 
   if [ "$1" == "fsync" ]; then
-    echo -e "\nPulling master before syncing"
-    git checkout master && git pull && git checkout - 
+    mainBranch=`getMainGitBranch`
+    echo -e "\nPulling $mainBranch branch before syncing"
+    git checkout $mainBranch && git pull && git checkout - 
+    unset mainBranch
   fi
 
   shift
