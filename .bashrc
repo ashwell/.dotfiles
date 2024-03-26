@@ -14,6 +14,7 @@
 PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/local/sbin:~/.dotfiles/bin:$PATH:./node_modules/.bin"
 
 # CUSTOM CDPATH
+[ -d ~/ ] && CDPATH="$CDPATH:~/"
 [ -d ~/repos ] && CDPATH="$CDPATH:~/repos"
 [ -d ~/repos/personal ] && CDPATH="$CDPATH:~/repos/personal"
 [ -d ~/repos/jsla ] && CDPATH="$CDPATH:~/repos/jsla"

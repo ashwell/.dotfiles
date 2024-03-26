@@ -20,7 +20,7 @@
     "@$\UF700"  = "moveToBeginningOfDocumentAndModifySelection:";   /* M-S-up       Select to beginning of document */
 
     "~\UF701"   = "pageDown:";                                      /* O-down       Page down */
-    "~$\UF701"  = "pageDownpAndModifySelection:";                   /* O-S-down     Select + page down */
+    "~$\UF701"  = "pageDownAndModifySelection:";                    /* O-S-down     Select + page down */
     "@\UF701"   = "moveToEndOfDocument:";                           /* M-down       End of document */
     "@$\UF701"  = "moveToEndOfDocumentAndModifySelection:";         /* M-S-down     Select to end of document */
 
