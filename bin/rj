@@ -27,7 +27,7 @@ checkInGitRepo ()
 
 getMainGitBranch ()
 {
-  local foundBranch=`git branch | grep -E 'master|main'`
+  local foundBranch=`git branch | grep -E '^ *(master|main)$'`
   if [ -z $foundBranch ]; then
     echo "No main or master branch found...exiting"
     exit 126;
