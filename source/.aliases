@@ -48,6 +48,8 @@ alias git-behind="git branch -vv --color=always | grep ': behind '"
 alias git-ahead="git branch -vv --color=always | grep ': ahead '"
 alias git-gone="git branch -vv --color=always | grep ': gone'"
 alias git-to-sync="git branch -vv --color=always | grep ': \(behind\|ahead\|gone\)'"
+alias git-code="code \$(git diff --name-only main...)"
+alias git-code-master="code \$(git diff --name-only master...)"
 
 # Homebrew
 if [[ `command -v brew` == *"brew" ]]; then
