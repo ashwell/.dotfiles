@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec npx cspell --no-summary --no-progress --language-id commit-msg $1

@@ -3,6 +3,8 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	longpaths = true
+  ignorecase = true
+  hooksPath = ~/.dotfiles/git-global-hooks
 [color]
 	ui = true
 	branch = auto
