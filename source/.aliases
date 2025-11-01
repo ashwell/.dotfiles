@@ -51,6 +51,10 @@ alias git-to-sync="git branch -vv --color=always | grep ': \(behind\|ahead\|gone
 alias git-code="code \$(git diff --name-only main...)"
 alias git-code-master="code \$(git diff --name-only master...)"
 
+# Randoms
+alias cspell-edit-dict="nvim ~/.dotfiles/source/cspell-dictionary.txt"
+alias agh="ag --hidden" # ag search hidden files (use -u for everything)
+
 # Homebrew
 if [[ `command -v brew` == *"brew" ]]; then
   alias brewu="brew update && echo 'outdated:' && brew outdated && brew doctor"
