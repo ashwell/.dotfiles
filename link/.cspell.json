@@ -1,0 +1,54 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "creds",
+    "cspell",
+    "githubusercontent",
+    "mkdirp",
+    "streetsidesoftware",
+    "tsmerge",
+    "visualstudio",
+    "vsmarketplacebadge"
+  ],
+  "flagWords": [
+    "hte"
+  ],
+  "ignorePaths": [
+    "node_modules/**"
+  ],
+  "dictionaries": [
+    "user-custom-words",
+    "en_US",
+    "companies",
+    "softwareTerms",
+    "misc",
+    "typescript",
+    "node",
+    "html",
+    "css",
+    "bash",
+    "fonts",
+    "filetypes",
+    "npm",
+    "aws",
+    "coding-compound-terms",
+    "computing-acronyms",
+    "cryptocurrencies",
+    "docker",
+    "git",
+    "google",
+    "html-symbol-entities",
+    "k8s",
+    "networking-terms",
+    "sql",
+    "terraform"
+  ],
+  "dictionaryDefinitions": [
+    {
+      "name": "user-custom-words",
+      "path": "~/.dotfiles/source/cspell-dictionary.txt",
+      "addWords": true
+    }
+  ]
+}

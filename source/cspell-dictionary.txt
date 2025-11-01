@@ -1,0 +1,7 @@
+datadoghq
+dmo
+env
+gql
+msal
+uta
+wgc
