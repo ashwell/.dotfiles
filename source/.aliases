@@ -54,6 +54,7 @@ alias git-code-master="code \$(git diff --name-only master...)"
 # Randoms
 alias cspell-edit-dict="nvim ~/.dotfiles/source/cspell-dictionary.txt"
 alias agh="ag --hidden" # ag search hidden files (use -u for everything)
+alias agv="ag -u" # ag search hidden files (use -u for everything)
 
 # Homebrew
 if [[ `command -v brew` == *"brew" ]]; then
