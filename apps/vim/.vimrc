@@ -138,7 +138,8 @@ endif
 set expandtab
 
 " Show special chars
-"set list
+set list
+set listchars=tab:»·,lead:.,trail:.,nbsp:.
 "set nolist
 
 " stop beeping already!

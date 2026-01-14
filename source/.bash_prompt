@@ -105,7 +105,7 @@ make_prompt(){
   IS_GIT_REPO=$(git rev-parse --is-inside-work-tree 2>/dev/null)
   # Is in Git Repo
   if [ $? == 0 ] && [ "$IS_GIT_REPO" == 'true' ]; then
-    COMMIT_HASH=$(git rev-parse --short HEAD)
+    COMMIT_HASH=$(git rev-parse HEAD)
     export COMMIT_HASH
   fi
 }

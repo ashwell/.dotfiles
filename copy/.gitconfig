@@ -11,6 +11,8 @@
   status = auto
 [init]
   defaultBranch = main
+[checkout]
+  defaultRemote = origin
 [push]
   default = simple
 [alias]
@@ -25,6 +27,7 @@
   fpush = push --force-with-lease
   uncommit = reset --soft HEAD^
   atag = "!git tag archive/$(git cbranch) $(git cbranch)"
+  untrack = rm --cached
 [url "git@github.com:"]
   insteadOf = https://github.com/
 [rerere]
