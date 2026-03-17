@@ -5,3 +5,9 @@ bower_components
 _vms
 *.snap
 *.chunk.*
+
+!**/.claude/**
+!**/.cursor/**
+!**/.vscode/**
+!**/.scratch/**
+!**/.github/**
