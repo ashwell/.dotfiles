@@ -6,6 +6,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Can be used to edit how many spaces are used for a tab stop
+# tabs -2
+
 # ENVIRONMENT VARS
 [[ `command -v less` ]] && PAGER=`command -v less`
 [[ `command -v vim` ]] && EDITOR=`command -v vim` ; VISUAL=`command -v vim`
