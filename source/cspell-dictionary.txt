@@ -10,3 +10,4 @@ Renderable
 uta
 wgc
 worktrees
+cstat
