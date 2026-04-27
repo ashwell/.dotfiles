@@ -4,7 +4,6 @@
   excludesfile = ~/.gitignore_global
   longpaths = true
   ignorecase = true
-  hooksPath = ~/.dotfiles/git-global-hooks
 [color]
   ui = true
   branch = auto
@@ -15,6 +14,9 @@
   defaultRemote = origin
 [push]
   default = simple
+[hook "spellcheck"]
+  event = commit-msg
+  command = ~/.dotfiles/git-global-hooks/commit-msg-spellcheck
 [alias]
   cbranch = symbolic-ref --short HEAD # outputs current branch
   fo = fetch origin
