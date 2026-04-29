@@ -1,22 +1,43 @@
 {
   "version": "0.2",
   "language": "en",
-  "words": [
-    "creds",
-    "cspell",
-    "githubusercontent",
-    "mkdirp",
-    "streetsidesoftware",
-    "tsmerge",
-    "visualstudio",
-    "vsmarketplacebadge"
-  ],
   "flagWords": [
-    "hte"
+    "accomodate",
+    "beleive",
+    "definately",
+    "freind",
+    "hte",
+    "neccessary",
+    "occured",
+    "occurence",
+    "recieve",
+    "seperate",
+    "teh",
+    "thier",
+    "untill",
+    "wierd"
   ],
   "ignorePaths": [
-    "node_modules/**"
+    "**/*.lock",
+    "**/*.map",
+    "**/*.min.*",
+    "**/*.snap",
+    "**/*.svg",
+    "**/CHANGELOG.md",
+    "**/__snapshots__/**",
+    ".next/**",
+    ".turbo/**",
+    ".yalc/**",
+    "build/**",
+    "coverage/**",
+    "dist/**",
+    "node_modules/**",
+    "package-lock.json",
+    "pnpm-lock.yaml",
+    "yarn.lock"
   ],
+  "useGitignore": true,
+  "allowCompoundWords": true,
   "dictionaries": [
     "user-custom-words",
     "en_US",
@@ -34,7 +55,6 @@
     "aws",
     "coding-compound-terms",
     "computing-acronyms",
-    "cryptocurrencies",
     "docker",
     "git",
     "google",
