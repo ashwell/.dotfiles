@@ -35,6 +35,7 @@ PATH="$HOME/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/
 [ -f ~/.dotfiles/source/.aliases ] && source ~/.dotfiles/source/.aliases
 [ -f ~/.dotfiles/source/.bash_prompt ] && source ~/.dotfiles/source/.bash_prompt
 [ -f ~/.dotfiles/source/.commacd.bash ] && source ~/.dotfiles/source/.commacd.bash
+[ -f ~/.dotfiles/source/.pnpm-completion.bash ] && source ~/.dotfiles/source/.pnpm-completion.bash
 
 # if has homebrew
 if [[ `command -v brew` == *"brew" ]]; then
