@@ -42,6 +42,14 @@ if [[ `command -v brew` == *"brew" ]]; then
   [[ -f `brew --prefix`/etc/bash_completion ]] && source `brew --prefix`/etc/bash_completion
 fi
 
+# if has @bomb.sh/tab
+if [[ `command -v tab` == *"tab" ]]; then
+  source <(tab npm bash)
+  source <(tab pnpm bash)
+  source <(tab yarn bash)
+  source <(tab bun bash)
+fi
+
 # [[ `command mono -v 2> /dev/null` ]] && export MONO_GAC_PREFIX="/usr/local"
 # [[ `command -v phantomjs 2> /dev/null` ]] && export PHANTOMJS_BIN=`command -v phantomjs`
 

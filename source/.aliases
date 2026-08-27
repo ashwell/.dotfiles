@@ -48,9 +48,20 @@ alias cstats="c && pwd && git status --untracked-files"
 alias git-behind="git branch -vv --color=always | grep ': behind '"
 alias git-ahead="git branch -vv --color=always | grep ': ahead '"
 alias git-gone="git branch -vv --color=always | grep ': gone'"
-alias git-to-sync="git branch -vv --color=always | grep ': \(behind\|ahead\|gone\)'"
+
+# alias git-to-sync="git branch -vv --color=always | grep ': \(behind\|ahead\|gone\)'"
+function git-to-sync() {
+  echo "--- Branches Behind ---"
+  git-behind || echo "None Behind :)"
+  echo -e "\n--- Branches Ahead ---"
+  git-ahead || echo "None Ahead :)"
+  echo -e "\n--- Branches Gone ---"
+  git-gone || echo "None Done :)"
+}
+
 alias git-code="code \$(git diff --name-only main...)"
 alias git-code-master="code \$(git diff --name-only master...)"
+alias git-code-main="code \$(git diff --name-only main...)"
 
 # Randoms
 alias cspell-edit-dict="nvim ~/.dotfiles/source/cspell-dictionary.txt"
