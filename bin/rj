@@ -153,7 +153,16 @@ fetchAndCheck ()
     echo "Not in a git repo...exiting"
     exit 126;
   fi
-  echo -e "fetching origin\n" && git fetch origin && echo "pruning origin" && git remote prune origin && echo "branches in need of updates(?): " && (git branch -vv --color=always | grep 'behind\|ahead\|gone')
+  echo -e "--- Fetching origin ---" && git fetch origin
+  echo -e "\n--- Pruning origin ---" && git remote prune origin
+  echo -e "\n--- Branches in need of updates(?) ---"
+  echo -e "\n--- Branches Behind ---"
+  git branch -vv --color=always | grep ': behind '
+  echo -e "\n--- Branches Ahead ---"
+  git branch -vv --color=always | grep ': ahead '
+  echo -e "\n--- Branches Gone ---"
+  git branch -vv --color=always | grep ': gone'
+  # (git branch -vv --color=always | grep 'behind\|ahead\|gone')
 }
 
 # Program Start
@@ -189,7 +198,7 @@ if [ "$1" == "sync" ] || [ "$1" == "fsync" ]; then
   if [ "$1" == "fsync" ]; then
     mainBranch=`getMainGitBranch`
     echo -e "\nPulling $mainBranch branch before syncing"
-    git checkout $mainBranch && git pull && git checkout - 
+    git checkout $mainBranch && git pull && git checkout -
     unset mainBranch
   fi
 
