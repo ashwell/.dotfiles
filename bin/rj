@@ -157,11 +157,11 @@ fetchAndCheck ()
   echo -e "\n--- Pruning origin ---" && git remote prune origin
   echo -e "\n--- Branches in need of updates(?) ---"
   echo -e "\n--- Branches Behind ---"
-  git branch -vv --color=always | grep ': behind '
+  git branch -vv --color=always | grep ': behind ' || echo "None"
   echo -e "\n--- Branches Ahead ---"
-  git branch -vv --color=always | grep ': ahead '
+  git branch -vv --color=always | grep ': ahead ' || echo "None"
   echo -e "\n--- Branches Gone ---"
-  git branch -vv --color=always | grep ': gone'
+  git branch -vv --color=always | grep ': gone' || echo "None"
   # (git branch -vv --color=always | grep 'behind\|ahead\|gone')
 }
 
