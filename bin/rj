@@ -14,6 +14,28 @@ echo -e "\nHello Ryan\n"
 # Check back out original branch
 # Execute via `rj pull branch-name`
 
+checkInGitRepo ()
+{
+  git branch > /dev/null 2>&1
+  if [ $? -ne 0 ]; then
+    echo "Not in a git repo...exiting"
+    exit 126;
+  else
+    echo 'In a git repo...proceeding'
+  fi
+}
+
+getMainGitBranch ()
+{
+  # this is broken when on main or master
+  local foundBranch=`git branch | grep -E '^ *(master|main)$'`
+  if [ -z $foundBranch ]; then
+    echo "No main or master branch found...exiting"
+    exit 126;
+  fi
+  echo $foundBranch
+}
+
 switchAndPull ()
 {
   git branch > /dev/null 2>&1
@@ -77,6 +99,7 @@ syncList ()
 
   local branchToReturnTo=`git branch | awk '/^\*/ {print $2}'`
   echo -e "Currently on $branchToReturnTo\n"
+  local mainBranch=`getMainGitBranch`
 
   for b in "$@"
   do
@@ -86,8 +109,8 @@ syncList ()
     fi
     echo "Checking out $b"
     git checkout $b
-    git rebase master
-    echo -e "$b rebased against master\n"
+    git rebase $mainBranch
+    echo -e "$b rebased against $mainBranch\n"
   done
   echo -e "\nAll requested branches up to date, switching back to $branchToReturnTo\n"
   git checkout $branchToReturnTo
@@ -130,10 +153,21 @@ fetchAndCheck ()
     echo "Not in a git repo...exiting"
     exit 126;
   fi
-  echo -e "fetching origin\n" && git fetch origin && echo "pruning origin" && git remote prune origin && echo "branches in need of updates(?): " && (git branch -vv --color=always | grep 'behind\|ahead\|gone')
+  echo -e "--- Fetching origin ---" && git fetch origin
+  echo -e "\n--- Pruning origin ---" && git remote prune origin
+  echo -e "\n--- Branches in need of updates(?) ---"
+  echo -e "\n--- Branches Behind ---"
+  git branch -vv --color=always | grep ': behind ' || echo "None"
+  echo -e "\n--- Branches Ahead ---"
+  git branch -vv --color=always | grep ': ahead ' || echo "None"
+  echo -e "\n--- Branches Gone ---"
+  git branch -vv --color=always | grep ': gone' || echo "None"
+  # (git branch -vv --color=always | grep 'behind\|ahead\|gone')
 }
 
 # Program Start
+checkInGitRepo && echo "Main branch: $(getMainGitBranch)";
+
 # exit on no arguments
 if [ $# -eq 0 ]; then
   echo "No arguments supplied"
@@ -162,8 +196,10 @@ if [ "$1" == "sync" ] || [ "$1" == "fsync" ]; then
   fi
 
   if [ "$1" == "fsync" ]; then
-    echo -e "\nPulling master before syncing"
-    git checkout master && git pull && git checkout - 
+    mainBranch=`getMainGitBranch`
+    echo -e "\nPulling $mainBranch branch before syncing"
+    git checkout $mainBranch && git pull && git checkout -
+    unset mainBranch
   fi
 
   shift

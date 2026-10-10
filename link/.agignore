@@ -1,6 +1,14 @@
-node_modules
-bower_components
+**/node_modules/**/*
+package-lock.json
+**/bower_components/**/*
+**/.next/**/*
 *.min.*
 _vms
 *.snap
 *.chunk.*
+
+!**/.claude/**
+!**/.cursor/**
+!**/.vscode/**
+!**/.scratch/**
+!**/.github/**

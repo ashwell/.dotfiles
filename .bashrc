@@ -6,14 +6,18 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Can be used to edit how many spaces are used for a tab stop
+# tabs -2
+
 # ENVIRONMENT VARS
 [[ `command -v less` ]] && PAGER=`command -v less`
 [[ `command -v vim` ]] && EDITOR=`command -v vim` ; VISUAL=`command -v vim`
 
 # CUSTOM PATH
-PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/local/sbin:~/.dotfiles/bin:$PATH:./node_modules/.bin"
+PATH="$HOME/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/local/sbin:$HOME/.dotfiles/bin:./node_modules/.bin:$PATH"
 
 # CUSTOM CDPATH
+[ -d ~/ ] && CDPATH="$CDPATH:~/"
 [ -d ~/repos ] && CDPATH="$CDPATH:~/repos"
 [ -d ~/repos/personal ] && CDPATH="$CDPATH:~/repos/personal"
 [ -d ~/repos/jsla ] && CDPATH="$CDPATH:~/repos/jsla"
@@ -31,13 +35,25 @@ PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/local/sbin:~/.dot
 [ -f ~/.dotfiles/source/.aliases ] && source ~/.dotfiles/source/.aliases
 [ -f ~/.dotfiles/source/.bash_prompt ] && source ~/.dotfiles/source/.bash_prompt
 [ -f ~/.dotfiles/source/.commacd.bash ] && source ~/.dotfiles/source/.commacd.bash
+[ -f ~/.dotfiles/source/.pnpm-completion.bash ] && source ~/.dotfiles/source/.pnpm-completion.bash
 
 # if has homebrew
 if [[ `command -v brew` == *"brew" ]]; then
   [[ -f `brew --prefix`/etc/bash_completion ]] && source `brew --prefix`/etc/bash_completion
 fi
 
+# if has @bomb.sh/tab
+if [[ `command -v tab` == *"tab" ]]; then
+  source <(tab npm bash)
+  source <(tab pnpm bash)
+  source <(tab yarn bash)
+  source <(tab bun bash)
+fi
+
 # [[ `command mono -v 2> /dev/null` ]] && export MONO_GAC_PREFIX="/usr/local"
 # [[ `command -v phantomjs 2> /dev/null` ]] && export PHANTOMJS_BIN=`command -v phantomjs`
 
-export PATH CDPATH INPUTRC PAGER EDITOR VISUAL
+DISABLE_TELEMETRY=1
+DO_NOT_TRACK=1
+
+export PATH CDPATH INPUTRC PAGER EDITOR VISUAL DISABLE_TELEMETRY DO_NOT_TRACK
