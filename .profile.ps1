@@ -59,6 +59,7 @@ fnm completions --shell powershell | Out-String | Invoke-Expression
 # Completions
 gh completion -s powershell | Out-String | Invoke-Expression
 bat --completion ps1 | Out-String | Invoke-Expression
+pnpm completion pwsh | Out-String | Invoke-Expression
 
 # winget
 Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
