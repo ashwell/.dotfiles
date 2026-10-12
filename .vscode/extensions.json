@@ -1,0 +1,21 @@
+{
+  "recommendations": [
+    "aaron-bond.better-comments",
+    "christian-kohler.path-intellisense",
+    "christian-kohler.npm-intellisense",
+    "dotenv.dotenv-vscode",
+    "EditorConfig.EditorConfig",
+    "Gruntfuggly.todo-tree",
+    "wix.vscode-import-cost",
+    "Zignd.html-css-class-completion",
+    "vscode-icons-team.vscode-icons",
+    "timonwong.shellcheck",
+    "streetsidesoftware.code-spell-checker",
+    "rogalmic.bash-debug",
+    "pranaygp.vscode-css-peek",
+    "ms-vscode.powershell",
+    "bierner.color-info",
+    "jock.svg",
+    "oxc.oxc-vscode"
+  ]
+}

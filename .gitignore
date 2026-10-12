@@ -6,3 +6,5 @@ apps/vim/.vim/bundle/**
 **/fishd.*
 **/fish_read_history
 profile.fish
+
+**/node_modules
