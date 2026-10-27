@@ -6,6 +6,8 @@ autoDedupe: true
 # In min (one week)
 minimumReleaseAge: 10080
 minimumReleaseAgeExclude:
+  - npm
+  - npx
   - pnpm
   - '@pnpm/*'
   - zx
