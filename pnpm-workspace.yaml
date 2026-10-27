@@ -1,0 +1,16 @@
+saveExact: true
+saveTypes: true
+lockfile:
+  includeResolutionSettings: true
+autoDedupe: true
+# In min (one week)
+minimumReleaseAge: 10080
+minimumReleaseAgeExclude:
+  - pnpm
+  - '@pnpm/*'
+  - zx
+  - '@dotenvx/*'
+  - npm-check-updates
+  - oxfmt
+  - oxlint
+  - cspell
