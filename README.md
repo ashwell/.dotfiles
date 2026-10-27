@@ -30,6 +30,7 @@ still a WIP
   - [shellcheck](https://www.shellcheck.net/)
   - [@dotenvx/dotenvx](https://dotenvx.com/)
   - [open-cli](https://github.com/sindresorhus/open-cli)
+  - [cspell](https://npmx.dev/package/cspell)
 - from OS package manager
   - All Systems
     - git
