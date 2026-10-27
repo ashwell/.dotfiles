@@ -1,0 +1,4 @@
+# Envfile (safe to commit)
+# ------------------------
+
+strict true
