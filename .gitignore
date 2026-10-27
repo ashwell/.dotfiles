@@ -8,3 +8,9 @@ apps/vim/.vim/bundle/**
 profile.fish
 
 **/node_modules
+
+*.local.*
+*.private.*
+
+.env*
+!.env.example
