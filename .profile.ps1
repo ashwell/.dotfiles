@@ -1,19 +1,41 @@
-# Custom Modules
+# --- Add to `code $PROFILE`
+<#
+  # Source Other User Locations
+  $possibleProfiles = @("$HOME\.dotfiles\.profile.ps1", "$HOME\.profile.ps1")
+  foreach ($profilePath in $possibleProfiles) {
+      if (Test-Path $profilePath) {
+          . $profilePath
+      }
+  }
+#>
+# --- End Add to $PROFILE
+
+#! Module Imports
 Import-Module -Name Terminal-Icons
 Import-Module -Name PSReadLine
 Import-Module -Name CompletionPredictor
 Import-Module -Name NerdFonts
 Import-Module -Name z
+# is ref'd when git-completion is imported
+$GitCompletionSettings = @{
+  ShowAllOptions = $false
+  ShowAllCommand = $true
+  IgnoreCase = $true
+  ExcludeCommands = @('history', 'survey')
+}
+Import-Module -Name git-completion # see setup below
+#* This was added by the winget install, here for ref (powertoys)
+# Import-Module -Name Microsoft.WinGet.CommandNotFound
 
-# Environment Variables
-$env:PAGER = "less" 
+#! Environment Variables
+$env:PAGER = "less"
 $env:EDITOR = "nvim"
 $env:VISUAL = "nvim"
-# Config Paths
+#! Config Paths
 $env:BAT_CONFIG_PATH = "$env:USERPROFILE\.dotfiles\source\bat.config"
 
-# Settings
-# PSReadLineOption
+#! Settings
+#! PSReadLineOption
 function OnViModeChange {
     # 'Command' or 'Insert'
     if($args[0] -eq 'Command') {
@@ -44,19 +66,30 @@ Set-PSReadLineKeyHandler -Chord 'Ctrl+Spacebar' -ViMode Insert -Function MenuCom
 Set-PSReadLineKeyHandler -Chord 'UpArrow' -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Chord 'DownArrow' -Function HistorySearchForward
 
-# Aliases
+#! Aliases
 Set-Alias ll Get-ChildItem
 Set-Alias which Get-Command
 Set-Alias c clear
 
+#! Prompt
 # Oh My Posh setup
 # oh-my-posh init pwsh --config jandedobbeleer --eval | Invoke-Expression
+
+#! Completions and Hooks
+# git-completion module's required registrations
+Register-ArgumentCompleter -CommandName gitk -Native -ScriptBlock {
+    param($wordToComplete, $CommandAst, $CursorPosition)
+    return (Complete-Gitk -CommandAst $CommandAst -CursorPosition $CursorPosition)
+}
+Register-ArgumentCompleter -CommandName git -Native -ScriptBlock {
+    param($wordToComplete, $CommandAst, $CursorPosition)
+    return (Complete-Git -CommandAst $CommandAst -CursorPosition $CursorPosition)
+}
 
 # Fast Node Manager Setup (fnm)
 fnm env --use-on-cd --shell powershell | Out-String | Invoke-Expression
 fnm completions --shell powershell | Out-String | Invoke-Expression
 
-# Completions
 gh completion -s powershell | Out-String | Invoke-Expression
 bat --completion ps1 | Out-String | Invoke-Expression
 pnpm completion pwsh | Out-String | Invoke-Expression
@@ -71,9 +104,3 @@ Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
             [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
         }
 }
-
-
-#f45873b3-b655-43a6-b217-97c00aa0db58 PowerToys CommandNotFound module
-
-Import-Module -Name Microsoft.WinGet.CommandNotFound
-#f45873b3-b655-43a6-b217-97c00aa0db58
