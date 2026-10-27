@@ -31,6 +31,7 @@ still a WIP
   - [@dotenvx/dotenvx](https://dotenvx.com/)
   - [open-cli](https://github.com/sindresorhus/open-cli)
   - [cspell](https://npmx.dev/package/cspell)
+  - [@google/zx](https://github.com/google/zx)
 - from OS package manager
   - All Systems
     - git
