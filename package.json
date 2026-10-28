@@ -1,0 +1,48 @@
+{
+  "name": "@ashwell/.dotfiles",
+  "version": "0.1.0",
+  "private": true,
+  "description": "My dotfiles and common configs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Ashwell <ashwell@users.noreply.github.com>",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@dotenvx/dotenvx": "2.38.1",
+    "cspell": "10.4.0",
+    "http-server": "14.1.1",
+    "npm-check-updates": "23.1.1",
+    "oxfmt": "0.74.0",
+    "oxlint": "1.89.0",
+    "shellcheck": "4.1.0",
+    "zx": "8.8.5"
+  },
+  "engines": {
+    "node": "^24.22.1",
+    "npm": "^12.2.1",
+    "pnpm": "^12.15.0"
+  },
+  "devEngines": {
+    "runtime": [
+      {
+        "name": "node",
+        "version": "^26.12.1",
+        "onFail": "warn"
+      },
+      {
+        "name": "node",
+        "version": "^24.22.1",
+        "onFail": "error"
+      }
+    ],
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^12.15.0",
+      "onFail": "error"
+    }
+  },
+  "packageManager": "pnpm@12.15.0"
+}

@@ -1,5 +1,6 @@
 [user]
   name = Ryan Bogle
+  # email = ashwell@users.noreply.github.com
 [core]
   excludesfile = ~/.gitignore_global
   longpaths = true
