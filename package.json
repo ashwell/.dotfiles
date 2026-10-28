@@ -1,5 +1,5 @@
 {
-  "name": ".dotfiles",
+  "name": "@ashwell/.dotfiles",
   "version": "0.1.0",
   "private": true,
   "description": "My dotfiles and common configs",
@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "Ryan Bogle <ryan.bogle@gmail.com>",
+  "author": "Ashwell <ashwell@users.noreply.github.com>",
   "license": "UNLICENSED",
   "dependencies": {
     "@dotenvx/dotenvx": "2.38.1",
