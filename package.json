@@ -1,6 +1,6 @@
 {
   "name": ".dotfiles",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "private": true,
   "description": "My dotfiles and common configs",
   "main": "index.js",
