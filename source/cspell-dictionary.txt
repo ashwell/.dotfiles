@@ -20,7 +20,10 @@ LaunchDarkly
 mkdirp
 msal
 npmx
+npmrc
 Nuqs
+nvm
+nvmrc
 pwuser
 Radix
 reimplementation
