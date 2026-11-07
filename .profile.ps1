@@ -87,12 +87,23 @@ Register-ArgumentCompleter -CommandName git -Native -ScriptBlock {
 }
 
 # Fast Node Manager Setup (fnm)
-fnm env --use-on-cd --shell powershell | Out-String | Invoke-Expression
-fnm completions --shell powershell | Out-String | Invoke-Expression
-
-gh completion -s powershell | Out-String | Invoke-Expression
-bat --completion ps1 | Out-String | Invoke-Expression
-pnpm completion pwsh | Out-String | Invoke-Expression
+if (Get-Command "fnm" -ErrorAction SilentlyContinue) {
+    fnm env --use-on-cd --shell powershell | Out-String | Invoke-Expression
+    fnm completions --shell powershell | Out-String | Invoke-Expression
+}
+if (Get-Command "gh" -ErrorAction SilentlyContinue) {
+    gh completion -s powershell | Out-String | Invoke-Expression
+}
+if (Get-Command "bat" -ErrorAction SilentlyContinue) {
+    bat --completion ps1 | Out-String | Invoke-Expression
+}
+if (Get-Command "pnpm" -ErrorAction SilentlyContinue) {
+    pnpm completion pwsh | Out-String | Invoke-Expression
+}
+if(Get-Command "uv" -ErrorAction SilentlyContinue) {
+    uv generate-shell-completion powershell | Out-String | Invoke-Expression
+    uvx --generate-shell-completion powershell | Out-String | Invoke-Expression
+}
 
 # winget
 Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {
