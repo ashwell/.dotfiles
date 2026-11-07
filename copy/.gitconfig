@@ -26,6 +26,8 @@
   new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   lgb = lg --branches
+  lgh = lg -8
+  lghb = lgh --branches
   logline = log -U0 -S
   fpush = push --force-with-lease
   uncommit = reset --soft HEAD^
