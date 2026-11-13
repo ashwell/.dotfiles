@@ -31,6 +31,9 @@ Import-Module -Name git-completion # see setup below
 $env:PAGER = "less"
 $env:EDITOR = "nvim"
 $env:VISUAL = "nvim"
+#! Path
+$env:Path += ";.\node_modules\.bin"
+
 #! Config Paths
 $env:BAT_CONFIG_PATH = "$env:USERPROFILE\.dotfiles\source\bat.config"
 
