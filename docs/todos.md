@@ -12,6 +12,7 @@
   - [#1](https://github.com/ashwell/.dotfiles/issues/1)
 - Build universal prompt with oh-my-posh
   - ticket needed
+- Build proper CLI entrypoint and migrate current rj script
 
 ## Project Management
 
