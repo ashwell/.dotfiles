@@ -9,9 +9,9 @@ minimumReleaseAgeExclude:
   - npm
   - npx
   - pnpm
-  - '@pnpm/*'
+  - "@pnpm/*"
   - zx
-  - '@dotenvx/*'
+  - "@dotenvx/*"
   - npm-check-updates
   - oxfmt
   - oxlint

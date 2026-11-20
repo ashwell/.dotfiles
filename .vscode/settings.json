@@ -1,9 +1,11 @@
 {
-    "cSpell.words": [
-        "ashwell",
-        "nvm",
-        "nvmrc",
-        "shellcheck",
-        "winget"
-    ]
+  "cSpell.words": [
+    "ashwell",
+    "incu",
+    "nvm",
+    "nvmrc",
+    "shellcheck",
+    "updep",
+    "winget"
+  ]
 }
